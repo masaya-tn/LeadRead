@@ -1,0 +1,4 @@
+= form_with model: output, local: true do |f|
+  = f.text_field :title, placeholder: 'タイトル'
+  = f.text_area :body, placeholder: 'アウトプット'
+  = f.submit '投稿', class: 'btn btn-primary btn-raised'

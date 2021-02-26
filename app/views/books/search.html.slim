@@ -1,0 +1,10 @@
+= form_with model: @search_form, url: search_books_path, local:true, scope: :q, method: :get do |f|
+  .form-group
+    = f.label :keyword, 'キーワード'
+    = f.text_field :keyword, class: 'form-control', value: @search_form.keyword
+  = f.submit '検索する'
+
+- @books.each do |book|
+  - @book_title = book.title
+  = link_to 'アウトプット', new_output_path(:book_title => @book_title)
+  = book.title

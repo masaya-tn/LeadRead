@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_072830) do
-
-  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "google_books_api_id", null: false
-    t.string "title", null: false
-    t.string "auther_name", null: false
-    t.string "image"
-    t.date "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["google_books_api_id"], name: "index_books_on_google_books_api_id", unique: true
-  end
+ActiveRecord::Schema.define(version: 2021_02_26_125512) do
 
   create_table "outputs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -29,6 +18,9 @@ ActiveRecord::Schema.define(version: 2021_02_26_072830) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "book_title", null: false
+    t.string "auther"
+    t.string "book_image"
     t.index ["user_id"], name: "index_outputs_on_user_id"
   end
 

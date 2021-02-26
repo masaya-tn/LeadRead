@@ -9,6 +9,7 @@ class OutputsController < ApplicationController
 
   def new
     @output = Output.new
+    @book_title = params[:book_title]
   end
 
   def create
@@ -44,6 +45,6 @@ class OutputsController < ApplicationController
   private
 
   def output_params
-    params.require(:output).permit(:title, :body)
+    params.require(:output).permit(:title, :body, :book_title)
   end
 end

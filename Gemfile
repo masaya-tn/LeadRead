@@ -31,6 +31,9 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem 'jquery-rails'
 gem 'popper_js'
+gem 'addressable'
+gem 'kaminari', '~> 0.17.0'
+gem 'carrierwave'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

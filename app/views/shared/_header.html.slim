@@ -1,0 +1,19 @@
+nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
+  .container
+    a.navbar-brand
+      = link_to 'Lead Read', root_path
+    button.navbar-toggler.navbar-toggler-right[type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"]
+      |  Menu 
+      i.fas.fa-bars
+    #navbarResponsive.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          a.nav-link
+            = link_to '投稿', search_books_path
+        li.nav-item
+          a.nav-link
+            = link_to '読書会'
+        li.nav-item
+          a.nav-link
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete
+            

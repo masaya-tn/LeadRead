@@ -1,6 +1,8 @@
-- @outputs.each do |output|
-  = link_to output_path(output)
-    = output.title
+.container
+  .row
+    - @outputs.each do |output|
+      .col-md-3
+        .card
+          = link_to output_path(output)
+            = output.title
     
-
-= link_to "新規作成", new_output_path

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'outputs#index'
+  constraints ->  request { request.session["warden.user.user.key"].present? } do
+    root "outputs#index"
+  end
+
+  root 'toppage#index'
+
   resources :outputs
   devise_for :users
   resources :books, only: %i[create show], shallow: true do

@@ -4,5 +4,8 @@
       .col-md-3
         .card
           = link_to output_path(output)
+            - if output.book_image.present?
+              = image_tag output.book_image
             = output.title
+            
     

@@ -1,0 +1,10 @@
+= @book_title
+- if output.book_image.present?
+  = image_tag output.book_image
+= form_with model: output, local: true do |f|
+  = f.text_field :title, placeholder: "#{output.title}"
+  = f.text_area :body, placeholder: "#{output.body}"
+  = f.hidden_field :book_title, :value => output.book_title
+  = f.hidden_field :author, :value => output.author
+  = f.hidden_field :book_image, :value => output.book_image
+  = f.submit '投稿', class: 'btn btn-primary btn-raised'

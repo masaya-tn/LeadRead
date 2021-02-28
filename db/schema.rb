@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_125512) do
+ActiveRecord::Schema.define(version: 2021_02_27_123438) do
 
   create_table "outputs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_02_26_125512) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "book_title", null: false
-    t.string "auther"
     t.string "book_image"
+    t.string "author"
     t.index ["user_id"], name: "index_outputs_on_user_id"
   end
 

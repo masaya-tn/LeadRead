@@ -4,7 +4,17 @@
     = f.text_field :keyword, class: 'form-control', value: @search_form.keyword
   = f.submit '検索する'
 
-- @books.each do |book|
-  - @book_title = book.title
-  = link_to 'アウトプット', new_output_path(:book_title => @book_title)
-  = book.title
+.container
+  .row
+    - @books.each do |book|
+      - @book_title = book.title
+      - @author = book.authors
+      - @book_image = book.image
+      .col-md-3
+        .card
+          - if book.image.present?
+           = image_tag book.image
+          = book.title
+        = link_to 'アウトプット', new_output_path(:book_title => @book_title, :author => @author, :book_image => @book_image)
+        = link_to 'アクション', new_action_path(:book_title => @book_title, :book_image => @book_image)
+

@@ -10,6 +10,8 @@ class OutputsController < ApplicationController
   def new
     @output = Output.new
     @book_title = params[:book_title]
+    @author = params[:author]
+    @book_image = params[:book_image]
   end
 
   def create
@@ -24,6 +26,7 @@ class OutputsController < ApplicationController
 
   def edit
     @output = current_user.outputs.find(params[:id])
+    
   end
 
   def update
@@ -45,6 +48,6 @@ class OutputsController < ApplicationController
   private
 
   def output_params
-    params.require(:output).permit(:title, :body, :book_title)
+    params.require(:output).permit(:title, :body, :book_title, :author, :book_image)
   end
 end

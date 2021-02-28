@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'toppage#index'
 
   resources :outputs
+  resources :actions
   devise_for :users
   resources :books, only: %i[create show], shallow: true do
     collection do

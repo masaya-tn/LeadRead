@@ -23,6 +23,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :outputs, dependent: :destroy
+  has_many :actions, dependent: :destroy
 
   def own?(object)
     id == object.user_id

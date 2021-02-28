@@ -3,7 +3,7 @@
 # Table name: outputs
 #
 #  id         :bigint           not null, primary key
-#  auther     :string(255)
+#  author     :string(255)
 #  body       :text(65535)      not null
 #  book_image :string(255)
 #  book_title :string(255)      not null

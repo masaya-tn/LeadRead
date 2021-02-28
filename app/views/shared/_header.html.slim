@@ -12,8 +12,10 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
             = link_to '投稿', search_books_path
         li.nav-item
           a.nav-link
+            = link_to 'アクション', actions_path  
+        li.nav-item
+          a.nav-link
             = link_to '読書会'
         li.nav-item
           a.nav-link
             = link_to 'ログアウト', destroy_user_session_path, method: :delete
-            

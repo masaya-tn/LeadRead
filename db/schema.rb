@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_123438) do
+ActiveRecord::Schema.define(version: 2021_02_28_081043) do
+
+  create_table "actions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "action_content", null: false
+    t.boolean "notion", default: false, null: false
+    t.string "book_title", null: false
+    t.string "book_image"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_actions_on_user_id"
+  end
 
   create_table "outputs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -36,5 +47,6 @@ ActiveRecord::Schema.define(version: 2021_02_27_123438) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "users"
   add_foreign_key "outputs", "users"
 end

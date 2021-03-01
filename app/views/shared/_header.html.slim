@@ -18,4 +18,7 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
             = link_to '読書会'
         li.nav-item
           a.nav-link
+            = link_to 'マイページ', user_path(current_user.id)
+        li.nav-item
+          a.nav-link
             = link_to 'ログアウト', destroy_user_session_path, method: :delete

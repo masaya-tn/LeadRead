@@ -1,0 +1,16 @@
+= @user.username
+- if @user.avatar.present?
+  = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
+
+- if current_user&.id == @user.id
+  = link_to 'プロフィール編集', edit_profile_path(@user.id)
+
+.container
+  .row
+    - @user.outputs.each do |output|
+      .col-md-3
+        .card
+          = link_to output_path(output)
+            - if output.book_image.present?
+              = image_tag output.book_image
+            = output.title

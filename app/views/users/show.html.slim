@@ -1,0 +1,6 @@
+= @user.username
+- if @user.avatar.present?
+  = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
+
+- if current_user&.id == @user.id
+  = link_to 'プロフィール編集', edit_profile_path(@user.id)

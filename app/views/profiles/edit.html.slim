@@ -1,0 +1,6 @@
+= form_with model: @user, url: profile_path, method: :patch, local: true do |f|
+  = f.label :avatar
+  = f.file_field :avatar
+  = f.text_field :username
+  = f.submit class: 'btn btn-primary btn-raised'
+

@@ -19,6 +19,6 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-class Action < ApplicationRecord
+class ActionPlan < ApplicationRecord
   belongs_to :user
 end

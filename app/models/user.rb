@@ -27,7 +27,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :outputs, dependent: :destroy
-  has_many :actions, dependent: :destroy
+  has_many :action_plans, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def own?(object)
     id == object.user_id

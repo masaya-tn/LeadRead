@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root 'toppage#index'
 
   resources :outputs
-  resources :actions
+  resources :likes, only: %i[create destroy]
+  resources :action_plans
   devise_for :users
   resources :books, only: %i[create show], shallow: true do
     collection do

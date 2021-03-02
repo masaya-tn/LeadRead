@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_034802) do
+ActiveRecord::Schema.define(version: 2021_03_02_065213) do
 
-  create_table "actions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "action_plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "action_content", null: false
     t.boolean "notion", default: false, null: false
     t.string "book_title", null: false
@@ -20,7 +20,17 @@ ActiveRecord::Schema.define(version: 2021_03_01_034802) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_actions_on_user_id"
+    t.index ["user_id"], name: "index_action_plans_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "output_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["output_id"], name: "index_likes_on_output_id"
+    t.index ["user_id", "output_id"], name: "index_likes_on_user_id_and_output_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "outputs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,6 +59,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_034802) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "actions", "users"
+  add_foreign_key "action_plans", "users"
+  add_foreign_key "likes", "outputs"
+  add_foreign_key "likes", "users"
   add_foreign_key "outputs", "users"
 end

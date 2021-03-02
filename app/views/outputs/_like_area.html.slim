@@ -1,0 +1,6 @@
+div id="like_area-#{output.id}"
+  - if current_user.like?(output)
+    = render 'unlike', output: output
+  - else
+    = render 'like', output: output
+    

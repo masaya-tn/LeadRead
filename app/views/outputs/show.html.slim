@@ -10,3 +10,4 @@
   = link_to output_path(@output), method: :delete, data: { confirm: '本当に削除しますか？' } do
     = "削除"
   
+= render 'like_area', output: @output

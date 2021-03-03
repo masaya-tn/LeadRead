@@ -1,17 +1,6 @@
 class ActionPlansController < ApplicationController
   def index
-  end
-
-  def show
-  end
-
-  def edit
-    @action_plan = current_user.action_plans.find(params[:id])
-  end
-
-  def update
-    @action_plan = current_user.action_plans.find(params[:id])
-    @action_plan.update
+    @action_plans = current_user.action_plans
   end
 
   def new
@@ -28,6 +17,30 @@ class ActionPlansController < ApplicationController
       flash.now[:danger] = '登録に失敗しました'
       render :new
     end
+  end
+
+  def show
+    @action_plan = current_user.action_plans.find(params[:id])
+  end
+
+  def edit
+    @action_plan = current_user.action_plans.find(params[:id])
+  end
+
+  def update
+    @action_plan = current_user.action_plans.find(params[:id])
+    if @action_plan.update(action_plan_params)
+      redirect_to action_plans_path, success: '更新しました'
+    else
+      flash.now[:danger] = '投稿の更新に失敗しました'
+      rend
+    end
+  end
+
+  def destroy
+    @action_plan = current_user.action_plans.find(params[:id])
+    @action_plan.destroy!
+    redirect_to action_plans_path, success: '削除しました'
   end
 
   private

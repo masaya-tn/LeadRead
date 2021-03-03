@@ -1,0 +1,12 @@
+.container
+  .row 
+    - @action_plans.each do |action_plan|
+      .col-md-3 
+        .card 
+          = link_to action_plan_path(action_plan)
+            = action_plan.book_title 
+            - if action_plan.book_image.present?
+              = image_tag action_plan.book_image
+            = action_plan.action_content
+
+

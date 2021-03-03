@@ -1,0 +1,5 @@
+= @meeting.title
+= @meeting.description
+
+= link_to '編集', edit_meeting_path(@meeting)
+= link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 

@@ -1,0 +1,5 @@
+- @meetings.each do |meeting|
+  = link_to meeting_path(meeting)
+    = meeting.title
+
+= link_to '新規作成', new_meeting_path

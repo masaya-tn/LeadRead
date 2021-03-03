@@ -1,0 +1,6 @@
+= form_with model: meeting, local: true do |f|
+  = f.text_field :title, placeholder: 'タイトル'
+  = f.text_area :description, placeholder: '詳細'
+  = f.number_field :capacity, placeholder: '人数'
+  = f.datetime_field :date, placeholder: '開催日'
+  = f.submit '投稿', class: 'btn btn-primary btn-raised'

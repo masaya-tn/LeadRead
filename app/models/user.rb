@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :action_plans, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_outputs, through: :likes, source: :output
-  has_many :like
+  has_many :meetings, dependent: :destroy
 
   def own?(object)
     id == object.user_id

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_065213) do
+ActiveRecord::Schema.define(version: 2021_03_03_041029) do
 
   create_table "action_plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "action_content", null: false
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 2021_03_02_065213) do
     t.index ["output_id"], name: "index_likes_on_output_id"
     t.index ["user_id", "output_id"], name: "index_likes_on_user_id_and_output_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "meetings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "capacity", null: false
+    t.datetime "date", null: false
+    t.boolean "open", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
   create_table "outputs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,5 +74,6 @@ ActiveRecord::Schema.define(version: 2021_03_02_065213) do
   add_foreign_key "action_plans", "users"
   add_foreign_key "likes", "outputs"
   add_foreign_key "likes", "users"
+  add_foreign_key "meetings", "users"
   add_foreign_key "outputs", "users"
 end

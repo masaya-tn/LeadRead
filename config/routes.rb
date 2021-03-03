@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :outputs
   resources :likes, only: %i[create destroy]
   resources :action_plans
+  resources :meetings
   devise_for :users
   resources :books, only: %i[create show], shallow: true do
     collection do

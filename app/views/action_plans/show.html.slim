@@ -1,2 +1,7 @@
-h1 Actions#show
-p Find me in app/views/actions/show.html.slim
+= @action_plan.book_title
+- if @action_plan.book_image.present?
+  = image_tag @action_plan.book_image
+= @action_plan.action_content
+
+= link_to '編集', edit_action_plan_path(@action_plan)
+= link_to '削除', action_plan_path(@action_plan), method: :delete, data: { confirm: '本当に削除しますか？' } 

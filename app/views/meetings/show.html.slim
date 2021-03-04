@@ -3,3 +3,9 @@
 
 = link_to '編集', edit_meeting_path(@meeting)
 = link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
+
+- if current_user&.own?(@meeting)
+  - @meeting.requested_users.each do |requesting_user|
+    = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
+- elsif current_user
+  = render 'request_area', meeting: @meeting

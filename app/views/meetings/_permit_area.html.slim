@@ -1,0 +1,6 @@
+div id="permit_area-#{requesting_user.id}"
+  - if meeting.permit?(requesting_user)
+    = render 'permited'
+  - else 
+    = render 'permit', meeting: meeting, user: requesting_user
+

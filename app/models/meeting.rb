@@ -22,4 +22,20 @@
 #
 class Meeting < ApplicationRecord
   belongs_to :user
+  has_many :requestings, dependent: :destroy
+  has_many :requesting_users, through: :requestings, source: :user
+  has_many :participants, dependent: :destroy
+  has_many :participanting_users, through: :participants, source: :user
+
+  def requested_users
+    requesting_users
+  end
+
+  def permit?(user)
+    participants.exists?(user_id: user.id)
+  end
+
+  def permit(user)
+    participanting_users << user
+  end
 end

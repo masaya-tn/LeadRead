@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: actions
+# Table name: action_plans
 #
 #  id             :bigint           not null, primary key
 #  action_content :text(65535)      not null
@@ -13,7 +13,7 @@
 #
 # Indexes
 #
-#  index_actions_on_user_id  (user_id)
+#  index_action_plans_on_user_id  (user_id)
 #
 # Foreign Keys
 #

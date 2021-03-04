@@ -30,7 +30,10 @@ class User < ApplicationRecord
   has_many :action_plans, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_outputs, through: :likes, source: :output
-  has_many :like
+  has_many :meetings, dependent: :destroy
+  has_many :requestings, dependent: :destroy
+  has_many :request_meetings, through: :requestings, source: :meeting
+  has_many :participants, dependent: :destroy
 
   def own?(object)
     id == object.user_id
@@ -45,7 +48,20 @@ class User < ApplicationRecord
   end
 
   def unlike(output)
-    binding.pry
     like_outputs.destroy(output)
   end
+
+  def request?(meeting)
+    requestings.exists?(meeting_id: meeting.id)
+  end
+
+  def request(meeting)
+    request_meetings << meeting
+  end
+
+  def unrequest(meeting)
+    request_meetings.destroy(meeting)
+  end
+
+  
 end

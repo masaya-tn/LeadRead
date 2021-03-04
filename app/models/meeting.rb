@@ -38,4 +38,8 @@ class Meeting < ApplicationRecord
   def permit(user)
     participanting_users << user
   end
+
+  def permited_users
+    participanting_users
+  end
 end

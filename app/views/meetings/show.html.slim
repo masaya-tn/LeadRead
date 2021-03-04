@@ -5,7 +5,16 @@
 = link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
 
 - if current_user&.own?(@meeting)
+  = "参加申請一覧"
   - @meeting.requested_users.each do |requesting_user|
     = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
+  = '参加者一覧'
+  = render 'new_participant', user: nil
+  - @meeting.permited_users.each do |permited_user|
+    = permited_user.username
+  
 - elsif current_user
   = render 'request_area', meeting: @meeting
+
+
+

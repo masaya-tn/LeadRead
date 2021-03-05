@@ -12,9 +12,15 @@
   = render 'new_participant', user: nil
   - @meeting.permited_users.each do |permited_user|
     = permited_user.username
-  
 - elsif current_user
   = render 'request_area', meeting: @meeting
+
+- if current_user&.own?(@meeting)
+  = render 'messages/messages', messages: @messages
+  hr.m-0
+  .post-message.p-3
+    = render 'messages/form', meeting: @meeting, message: @message
+  
 
 
 

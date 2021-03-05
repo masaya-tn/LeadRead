@@ -39,6 +39,8 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
+    @messages = @meeting.messages
+    @message = Message.new
   end
 
   private

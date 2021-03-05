@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many :requestings, dependent: :destroy
   has_many :request_meetings, through: :requestings, source: :meeting
   has_many :participants, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def own?(object)
     id == object.user_id

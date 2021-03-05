@@ -100,6 +100,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.12.0)
+      i18n (>= 1.6, < 2)
     ffi (1.14.2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
@@ -299,6 +301,7 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   devise
+  faker
   font-awesome-sass
   html2slim
   jbuilder (~> 2.5)

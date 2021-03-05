@@ -1,6 +1,7 @@
-div id="request_area-#{meeting.id}"
-  - if current_user.request?(meeting)
-    = render 'unrequest', meeting: meeting 
-  - else 
-    = render 'request', meeting: meeting
+- if !current_user.participant?(meeting)
+  div id="request_area-#{meeting.id}"
+    - if current_user.request?(meeting)
+      = render 'unrequest', meeting: meeting 
+    - else 
+      = render 'request', meeting: meeting
 

@@ -26,6 +26,7 @@ class Meeting < ApplicationRecord
   has_many :requesting_users, through: :requestings, source: :user
   has_many :participants, dependent: :destroy
   has_many :participanting_users, through: :participants, source: :user
+  has_many :messages, dependent: :destroy
 
   def requested_users
     requesting_users

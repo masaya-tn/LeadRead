@@ -9,5 +9,6 @@ class ParticipantsController < ApplicationController
   end
   
   def destroy
+    
   end
 end

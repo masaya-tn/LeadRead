@@ -6,6 +6,7 @@ class RequestingsController < ApplicationController
 
   def destroy
     @meeting = Requesting.find(params[:id]).meeting
-    current_user.unrequest(@meeting)
+    @user = User.find(params[:user_id])
+    @user.unrequest(@meeting)
   end
 end

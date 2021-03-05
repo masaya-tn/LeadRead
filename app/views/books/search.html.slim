@@ -17,4 +17,5 @@
           = book.title
         = link_to 'アウトプット', new_output_path(:book_title => @book_title, :author => @author, :book_image => @book_image)
         = link_to 'アクション', new_action_plan_path(:book_title => @book_title, :book_image => @book_image)
+  = paginate @books
 

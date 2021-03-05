@@ -1,6 +1,6 @@
 class OutputsController < ApplicationController
   def index
-    @outputs = Output.all
+    @outputs = Output.all.page(params[:page]).per(20)
   end
 
   def show

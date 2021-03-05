@@ -1,21 +1,22 @@
 = @meeting.title
 = @meeting.description
 
-= link_to '編集', edit_meeting_path(@meeting)
-= link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
-
 - if current_user&.own?(@meeting)
   = "参加申請一覧"
   - @meeting.requested_users.each do |requesting_user|
     = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
   = '参加者一覧'
   = render 'new_participant', user: nil
+  = render 'reject_user', user: nil
   - @meeting.permited_users.each do |permited_user|
     = permited_user.username
+  
+  = link_to '編集', edit_meeting_path(@meeting)
+  = link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
 - elsif current_user
   = render 'request_area', meeting: @meeting
 
-- if current_user&.own?(@meeting)
+- if current_user&.own?(@meeting) || current_user&.participant?(@meeting)
   = render 'messages/messages', messages: @messages
   hr.m-0
   .post-message.p-3

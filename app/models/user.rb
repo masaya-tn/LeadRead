@@ -64,5 +64,7 @@ class User < ApplicationRecord
     request_meetings.destroy(meeting)
   end
 
-  
+  def participant?(meeting)
+    participants.exists?(meeting_id: meeting.id)
+  end
 end

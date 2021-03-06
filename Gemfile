@@ -28,12 +28,14 @@ gem 'bootstrap'
 gem 'annotate'
 gem 'rails-i18n'
 gem 'font-awesome-sass'
-gem 'devise'
+gem 'devise', git: "https://github.com/heartcombo/devise"
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'addressable'
 gem 'kaminari', '~> 0.17.0'
 gem 'carrierwave'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

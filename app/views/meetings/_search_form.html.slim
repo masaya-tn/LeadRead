@@ -1,0 +1,4 @@
+= search_form_for(@q, url:meeting_search_path) do |f|
+  = f.label :title_cont, 'タイトル'
+  = f.search_field :title_cont
+  = f.submit

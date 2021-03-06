@@ -1,6 +1,12 @@
 class MeetingsController < ApplicationController
   def index
     @meetings = Meeting.all.page(params[:page]).per(10)
+    @q = Meeting.ransack(params[:q])
+  end
+
+  def search
+    @q = Meeting.search(search_params)
+    @meetings = @q.result(distinct: true)
   end
 
   def new
@@ -47,5 +53,9 @@ class MeetingsController < ApplicationController
 
   def meeting_params
     params.require(:meeting).permit(:title, :description, :date, :capacity)
+  end
+
+  def search_params
+    params.require(:q).permit(:title_cont)
   end
 end

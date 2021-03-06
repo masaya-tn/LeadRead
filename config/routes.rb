@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   root 'toppage#index'
 
   resources :outputs
+  get 'output_search', to: 'outputs#search'
   resources :likes, only: %i[create destroy]
   resources :action_plans
   resources :meetings, shallow: true do
     resources :messages
   end
+  get 'meeting_search', to: 'meetings#search'
   resources :requestings, only: %i[create destroy]
   resources :participants, only: %i[create destroy]
   devise_for :users, controllers: {

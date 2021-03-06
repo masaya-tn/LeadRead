@@ -12,7 +12,8 @@ html
       = render 'shared/header'
     - else
       = render 'shared/before_login_header'
-    = render 'shared/flash_messages'
+    
     main
+      = render 'shared/flash_messages'
       = yield
       = render 'shared/modal'

@@ -1,7 +1,5 @@
 h6
-  | アウトプット検索
-= render 'search_form'
-
+  | 検索結果
 .container
   .row
     - @outputs.each do |output|
@@ -11,5 +9,3 @@ h6
             - if output.book_image.present?
               = image_tag output.book_image
             = output.title
-  = paginate @outputs   
-            

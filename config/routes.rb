@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'toppage#index'
 
   resources :outputs
+  get 'search', to: 'outputs#search'
   resources :likes, only: %i[create destroy]
   resources :action_plans
   resources :meetings, shallow: true do

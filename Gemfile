@@ -36,6 +36,7 @@ gem 'kaminari', '~> 0.17.0'
 gem 'carrierwave'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'ransack'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

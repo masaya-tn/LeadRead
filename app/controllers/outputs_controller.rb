@@ -1,6 +1,12 @@
 class OutputsController < ApplicationController
   def index
     @outputs = Output.all.page(params[:page]).per(20)
+    @q = Output.ransack(params[:q])
+  end
+
+  def search
+    @q = Output.search(search_params)
+    @outputs = @q.result(distinct: true)
   end
 
   def show
@@ -49,5 +55,9 @@ class OutputsController < ApplicationController
 
   def output_params
     params.require(:output).permit(:title, :body, :book_title, :author, :book_image)
+  end
+
+  def search_params
+    params.require(:q).permit(:title_cont, :book_title_cont)
   end
 end

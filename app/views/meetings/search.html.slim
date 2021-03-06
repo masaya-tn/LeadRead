@@ -1,0 +1,6 @@
+h6 
+  | 検索結果
+
+- @meetings.each do |meeting|
+  = link_to meeting_path(meeting)
+    = meeting.title

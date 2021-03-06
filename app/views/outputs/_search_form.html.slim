@@ -1,4 +1,4 @@
-= search_form_for(@q, url:search_path) do |f|
+= search_form_for(@q, url:output_search_path) do |f|
   = f.label :title_cont, 'タイトル'
   = f.search_field :title_cont
   = f.label :book_title_cont, '本のタイトル'

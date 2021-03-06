@@ -1,3 +1,7 @@
+h6
+  | 読書会検索
+= render 'search_form'
+
 - @meetings.each do |meeting|
   = link_to meeting_path(meeting)
     = meeting.title

@@ -22,3 +22,6 @@ h2
   .actions
     = f.submit "Sign up"
 = render "users/shared/links"
+= link_to 'Twitter login', user_omniauth_authorize_path(:twitter) 
+
+

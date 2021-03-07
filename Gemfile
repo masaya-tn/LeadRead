@@ -37,6 +37,8 @@ gem 'carrierwave'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'ransack'
+gem 'dotenv-rails'
+gem "omniauth-rails_csrf_protection"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

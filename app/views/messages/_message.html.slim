@@ -1,10 +1,13 @@
 div id="message-#{message.id}"
-  .col-9
-    = message.user.username 
-    = message.body
-  .col-1 
-    - if current_user&.own?(message)
-      = link_to message_path(message), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
-        = icon 'far', 'trash-alt', class: 'fa-sm'
-      = link_to edit_message_path(message), remote: true do 
-        = icon 'far', 'edit', class: 'fa-sm'
+  .row
+    .col-sm-8
+      - if message.user.avatar.present?
+        = image_tag message.user.avatar.url, size: '30x30', class: 'rounded-circle mr-1' 
+      = message.user.username 
+      = message.body
+    .col-sm-4
+      - if current_user&.own?(message)
+        = link_to message_path(message), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
+          = icon 'far', 'trash-alt', class: 'fa-sm'
+        = link_to edit_message_path(message), remote: true do 
+          = icon 'far', 'edit', class: 'fa-sm'

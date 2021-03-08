@@ -1,3 +1,4 @@
+require 'date'
 # == Schema Information
 #
 # Table name: meetings
@@ -28,6 +29,17 @@ class Meeting < ApplicationRecord
   has_many :participanting_users, through: :participants, source: :user
   has_many :messages, dependent: :destroy
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :capacity, presence: true
+  validates :date, presence: true
+  validate :before_today
+    def before_today
+      unless date == nil
+        errors.add(:date, '過去の日付は登録できません') if date < Date.today.to_time
+      end
+    end
+
   def requested_users
     requesting_users
   end
@@ -42,5 +54,9 @@ class Meeting < ApplicationRecord
 
   def permited_users
     participanting_users
+  end
+
+  def after_now?
+    date > Date.today.to_time
   end
 end

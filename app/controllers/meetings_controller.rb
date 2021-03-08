@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   def index
-    @meetings = Meeting.all.page(params[:page]).per(10)
+    @meetings = Meeting.all.page(params[:page]).per(10).order(created_at: :desc)
     @q = Meeting.ransack(params[:q])
   end
 

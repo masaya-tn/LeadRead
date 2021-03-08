@@ -1,6 +1,8 @@
 = search_form_for(@q, url:output_search_path) do |f|
-  = f.label :title_cont, 'タイトル'
-  = f.search_field :title_cont
-  = f.label :book_title_cont, '本のタイトル'
-  = f.search_field :book_title_cont
-  = f.submit
+  .row
+    .col
+      = f.search_field :title_cont, class: 'form-control', placeholder: 'アウトプット'
+    .col
+      = f.search_field :book_title_cont, class: 'form-control', placeholder: '本'
+    .col-md-2
+      = f.submit 'search', class: 'btn btn-outline-info rounded'

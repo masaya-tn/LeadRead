@@ -1,10 +1,31 @@
-= @book_title
-- if output.book_image.present?
-  = image_tag output.book_image
+.card.mb-3
+  .row.no-gutters 
+    .col-md-4 
+      - if output.book_image.present?
+        = image_tag output.book_image 
+    .col-md-8
+      .card-body
+        .card-title = "タイトル: #{output.book_title}"
+        .card-text
+          = "著者:"
+          - if output.author.instance_of?(Array)
+            - output.author.each do |author|
+              = author
+          - else 
+            = output.author
 = form_with model: output, local: true do |f|
-  = f.text_field :title, placeholder: "#{output.title}"
-  = f.text_area :body, placeholder: "#{output.body}"
+  .form-group.row
+    label.col-sm-2.col-form-label 
+      = "タイトル"
+    .col-sm-10 
+      = f.text_field :title, class: 'form-control'
+  .form-group.row
+    label.col-sm-2.col-form-label 
+      = "本文"
+    .col-sm-10 
+      = f.text_area :body, class: 'form-control'
   = f.hidden_field :book_title, :value => output.book_title
   = f.hidden_field :author, :value => output.author
   = f.hidden_field :book_image, :value => output.book_image
-  = f.submit '投稿', class: 'btn btn-primary btn-raised'
+  = f.submit '投稿', class: 'btn btn-outline-info'
+  

@@ -16,7 +16,7 @@ class OutputsController < ApplicationController
   def new
     @output = Output.new
     @book_title = params[:book_title]
-    @author = params[:author]
+    @authors = params[:author]
     @book_image = params[:book_image]
   end
 

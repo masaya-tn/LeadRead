@@ -1,11 +1,26 @@
-= @book_title
-- if @book_image.present?
-  = image_tag @book_image
+.card.mb-3 
+  .row.no-gutters 
+    .col-md-4 
+      - if @book_image.present?
+        = image_tag @book_image
+    .col-md-8 
+      .card-body 
+        .card-title = "タイトル: #{book_title}"
+          
+= form_with model:action_plan,local: true do |f|
+  .form-group.row 
+    label.col-md-4.col-form-label
+      = "メール通知を受ける"
+    .col-md-8
+      = f.check_box :notion
+  .form-group.row 
+    label.col-md-4.col-form-label
+      = "アクションプラン"
+    .col-md-8 
+      = f.text_area :action_content, class: 'form-control'
+  = f.hidden_field :book_title, :value => book_title
+  = f.hidden_field :book_image, :value => book_image
+  = f.submit '登録', class: 'btn btn-outline-info rounded'
 
-= form_with model:@action_plan,local: true do |f|
-  = f.check_box :notion
-  = f.text_area :action_content
-  = f.hidden_field :book_title, :value => @book_title
-  = f.hidden_field :book_image, :value => @book_image
-  = f.submit '登録', class: 'btn btn-primary btn-raised'
+
 

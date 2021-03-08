@@ -3,7 +3,14 @@
 @import 'font-awesome';
 
 
+// .book-card:hover {
+//   transform: scale(1.1, 1.1);
+// }
 
+.book-card:hover {
+  opacity: 0.5;
+　color: white;
+}
 
 /*!
  * Start Bootstrap - Clean Blog v5.0.10 (https://startbootstrap.com/theme/clean-blog)

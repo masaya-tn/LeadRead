@@ -1,11 +1,1 @@
-= @book_title
-- if @book_image.present?
-  = image_tag @book_image
-
-= form_with model:@action_plan,local: true do |f|
-  = f.check_box :notion
-  = f.text_area :action_content
-  = f.hidden_field :book_title, :value => @book_title
-  = f.hidden_field :book_image, :value => @book_image
-  = f.submit '登録', class: 'btn btn-primary btn-raised'
-
+= render 'form', action_plan: @action_plan, book_title: @book_title, book_image: @book_image

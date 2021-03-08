@@ -1,8 +1,9 @@
 = form_with model: @search_form, url: search_books_path, local:true, scope: :q, method: :get do |f|
-  .form-group
-    = f.label :keyword, 'キーワード'
-    = f.text_field :keyword, class: 'form-control', value: @search_form.keyword
-  = f.submit '検索する'
+  .row
+    .col
+      = f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワード'
+    .col-md-3
+      = f.submit 'search', class: 'btn btn-outline-info'
 
 .container
   .row
@@ -11,11 +12,13 @@
       - @author = book.authors
       - @book_image = book.image
       .col-md-3
-        .card
-          - if book.image.present?
-           = image_tag book.image
-          = book.title
-        = link_to 'アウトプット', new_output_path(:book_title => @book_title, :author => @author, :book_image => @book_image)
-        = link_to 'アクション', new_action_plan_path(:book_title => @book_title, :book_image => @book_image)
+        .dropdown
+          .card.book-card.dropdown-toggle[id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            - if book.image.present?
+             = image_tag book.image
+            = book.title
+          .dropdown-menu[aria-labelledby="dropdownMenuLink"]
+            = link_to 'アウトプット', new_output_path(:book_title => @book_title, :author => @author, :book_image => @book_image), class: 'dropdown-item'
+            = link_to 'アクション', new_action_plan_path(:book_title => @book_title, :book_image => @book_image), class: 'dropdown-item'
   = paginate @books
 

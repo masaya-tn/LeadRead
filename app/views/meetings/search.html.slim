@@ -1,6 +1,14 @@
 h6 
   | 検索結果
 
-- @meetings.each do |meeting|
-  = link_to meeting_path(meeting)
-    = meeting.title
+.row
+  - @meetings.each do |meeting|
+    .col-md-12
+      .card
+        = link_to meeting_path(meeting)
+          .card-body 
+            .card-title
+              = meeting.title
+            .card-body
+              = meeting.description
+  

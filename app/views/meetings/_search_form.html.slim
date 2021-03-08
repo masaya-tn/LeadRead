@@ -1,4 +1,7 @@
 = search_form_for(@q, url:meeting_search_path) do |f|
-  = f.label :title_cont, 'タイトル'
-  = f.search_field :title_cont
-  = f.submit
+  .row
+    .col
+      = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワード'
+    .col
+      = f.submit 'search', class: 'btn btn-outline-info rounded'
+

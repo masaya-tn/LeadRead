@@ -4,14 +4,17 @@ h6
 
 .row
   - @meetings.each do |meeting|
-    .col-md-12
-      .card.w-75
-        = link_to meeting_path(meeting)
-          .card-body 
-            .card-title
-              = meeting.title
-            .card-body
-              = meeting.description
+    - if meeting.after_now?
+      .col-md-12
+        .card.w-75
+          = link_to meeting_path(meeting)
+            .card-body 
+              - if meeting.user.avatar.present?
+                = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+              .card-title
+                = meeting.title
+              .card-body
+                = meeting.description
   = paginate @meetings
 
 = link_to '新規作成', new_meeting_path

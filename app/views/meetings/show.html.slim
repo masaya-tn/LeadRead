@@ -1,27 +1,33 @@
-= @meeting.title
-= @meeting.description
+.card
+  - if @meeting.user.avatar.present?
+    = image_tag @meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+  = @meeting.user.username
+  = "参加人数: #{@meeting.permited_users.count}人/#{@meeting.capacity}人"
+  = @meeting.title
+  = @meeting.description
 
-- if current_user&.own?(@meeting)
-  = "参加申請一覧"
-  - @meeting.requested_users.each do |requesting_user|
-    = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
-  = '参加者一覧'
-  = render 'new_participant', user: nil
-  = render 'reject_user', user: nil
-  - @meeting.permited_users.each do |permited_user|
-    = permited_user.username
+  - if current_user&.own?(@meeting)
+    = "参加申請一覧"
+    - @meeting.requested_users.each do |requesting_user|
+      = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
+    = '参加者一覧'
+    = render 'new_participant', user: nil
+    = render 'reject_user', user: nil
+    - @meeting.permited_users.each do |permited_user|
+      = permited_user.username
   
-  = link_to '編集', edit_meeting_path(@meeting)
-  = link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
-- elsif current_user
-  = render 'request_area', meeting: @meeting
+    = link_to '編集', edit_meeting_path(@meeting)
+    = link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
+  - elsif current_user
+    = render 'request_area', meeting: @meeting
 
-- if current_user&.own?(@meeting) || current_user&.participant?(@meeting)
-  = render 'messages/messages', messages: @messages
-  hr.m-0
-  .post-message.p-3
-    = render 'messages/form', meeting: @meeting, message: @message
-  
+  - if current_user&.own?(@meeting) || current_user&.participant?(@meeting)
+    = render 'messages/messages', messages: @messages
+    hr.m-0
+    .post-message.p-3
+      = render 'messages/form', meeting: @meeting, message: @message
+  = @meeting.date.to_s(:datetime)
+    
 
 
 

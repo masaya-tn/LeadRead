@@ -1,3 +1,8 @@
 = form_with model: [meeting, message], remote: true do |f|
-  = f.text_field :body, class: 'input-message-body', placeholder: 'メッセージ'
-  = f.submit '投稿', class: 'btn btn-primary btn-raised'
+  .row 
+    .col
+      = f.text_field :body, class: 'input-message-body form-control', placeholder: 'メッセージ'
+    .col
+      = f.submit '投稿', class: 'btn btn-info btn-raised rounded'
+
+

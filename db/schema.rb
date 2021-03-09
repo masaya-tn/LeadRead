@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_131033) do
+ActiveRecord::Schema.define(version: 2021_03_09_050644) do
 
   create_table "action_plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "action_content", null: false
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 2021_03_08_131033) do
     t.datetime "updated_at", null: false
     t.index ["meeting_id"], name: "index_messages_on_meeting_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "notifiable_type"
+    t.bigint "notifiable_id"
+    t.bigint "user_id"
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "outputs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,6 +132,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_131033) do
   add_foreign_key "meetings", "users"
   add_foreign_key "messages", "meetings"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "outputs", "users"
   add_foreign_key "participants", "meetings"
   add_foreign_key "participants", "users"

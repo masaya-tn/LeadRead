@@ -47,6 +47,7 @@ class User < ApplicationRecord
            dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :notifications, dependent: :destroy
 
   def self.find_or_create_from_oauth(auth)
     User.find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|

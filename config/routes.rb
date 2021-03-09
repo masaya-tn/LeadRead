@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+  resources :relationships, only: %i[create destroy]
   resources :books, only: %i[create show], shallow: true do
     collection do
       get :search

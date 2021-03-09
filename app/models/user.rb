@@ -39,6 +39,14 @@ class User < ApplicationRecord
   has_many :request_meetings, through: :requestings, source: :meeting
   has_many :participants, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+           foreign_key: 'follower_id',
+           dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+           foreign_key: 'followed_id',
+           dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   def self.find_or_create_from_oauth(auth)
     User.find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
@@ -79,6 +87,18 @@ class User < ApplicationRecord
 
   def participant?(meeting)
     participants.exists?(meeting_id: meeting.id)
+  end
+
+  def follow(other_user)
+    followings << other_user
+  end
+
+  def unfollow(other_user)
+    followings.destroy(other_user)
+  end
+
+  def following?(other_user)
+    followings.include?(other_user)
   end
 
   private

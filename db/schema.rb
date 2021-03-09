@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_070905) do
+ActiveRecord::Schema.define(version: 2021_03_08_131033) do
 
   create_table "action_plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "action_content", null: false
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 2021_03_04_070905) do
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
   create_table "requestings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "meeting_id"
@@ -97,10 +107,10 @@ ActiveRecord::Schema.define(version: 2021_03_04_070905) do
     t.datetime "updated_at", null: false
     t.string "avatar"
     t.string "username"
-    t.string "image"
-    t.string "name"
     t.string "uid"
     t.string "provider"
+    t.string "name"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

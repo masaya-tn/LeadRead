@@ -1,18 +1,40 @@
-- if @user.avatar.present?
-  = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
-= @user.username
+.row 
+  .column
+    - if @user.avatar.present?
+      = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
+  .column
+    = @user.username
+    - if current_user.id == @user.id
+      = link_to 'プロフィール編集', edit_profile_path(@user.id), class: 'btn btn-info btn-raised rounded'
+    - elsif current_user 
+      = render 'follow_area', user: @user
 
-- if current_user.id == @user.id
-  = link_to 'プロフィール編集', edit_profile_path(@user.id)
-- elsif current_user 
-  = render 'follow_area', user: @user
+p   
+  a.btn aria-controls="multiCollapseFollow" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollow" role="button" フォロー
+  a.btn aria-controls="multiCollapseFollower" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollower" role="button" フォロワー
+.row 
+  .col 
+    #multiCollapseFollow.collapse.multi-collapse 
+      - if current_user.followings.present?
+        - current_user.followings.each do |following|
+          = link_to user_path(following)
+            = following.username
+      - else
+        = "フォローしているユーザーはいません"
+  .col 
+    #multiCollapseFollower.collapse.multi-collapse
+      - if current_user.followers.present?
+        - current_user.followers.each do |follower|
+          = link_to user_path(follower)
+            = follower.username
+      - else
+        = "フォロワーはいません"
 
-.container
-  .row
-    - @user.outputs.each do |output|
-      .col-md-3
-        .card
-          = link_to output_path(output)
-            - if output.book_image.present?
-              = image_tag output.book_image
-            = output.title
+.row
+  - @user.outputs.each do |output|
+    .col-md-3
+      .card
+        = link_to output_path(output)
+          - if output.book_image.present?
+            = image_tag output.book_image
+          = output.title

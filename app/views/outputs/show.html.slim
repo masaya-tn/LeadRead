@@ -5,6 +5,10 @@
         = image_tag @output.book_image
     .col-md-8
       .card-body
+        = link_to user_path(@output.user)
+          - if @output.user.avatar.present?
+            = image_tag @output.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+          = @output.user.username
         .card-title = "タイトル: #{@output.book_title}"
         .card-text
           = "著者:"

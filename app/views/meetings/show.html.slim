@@ -1,7 +1,8 @@
 .card
-  - if @meeting.user.avatar.present?
-    = image_tag @meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
-  = @meeting.user.username
+  = link_to user_path
+    - if @meeting.user.avatar.present?
+      = image_tag @meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+    = @meeting.user.username
   = "参加人数: #{@meeting.permited_users.count}人/#{@meeting.capacity}人"
   = @meeting.title
   = @meeting.description

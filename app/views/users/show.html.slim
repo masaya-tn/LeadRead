@@ -1,9 +1,11 @@
-= @user.username
 - if @user.avatar.present?
   = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
+= @user.username
 
-- if current_user&.id == @user.id
+- if current_user.id == @user.id
   = link_to 'プロフィール編集', edit_profile_path(@user.id)
+- elsif current_user 
+  = render 'follow_area', user: @user
 
 .container
   .row

@@ -3,14 +3,11 @@
     .col
       = f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワード'
     .col-md-3
-      = f.submit 'search', class: 'btn btn-outline-info'
+      = f.submit 'search', class: 'btn btn-info btn-raised rounded'
 
 .container
   .row
     - @books.each do |book|
-      - @book_title = book.title
-      - @author = book.authors
-      - @book_image = book.image
       .col-md-3
         .dropdown
           .card.book-card.dropdown-toggle[id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]

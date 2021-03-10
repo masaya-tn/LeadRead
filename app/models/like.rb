@@ -29,6 +29,6 @@ class Like < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(notifiable: self, user: output)
+    Notification.create(notifiable: self, user: output.user)
   end
 end

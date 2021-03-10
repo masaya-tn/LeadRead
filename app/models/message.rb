@@ -29,6 +29,6 @@ class Message < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(notifiable: self, user: meeting)
+    Notification.create(notifiable: self, user: meeting.user)
   end
 end

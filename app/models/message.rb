@@ -22,4 +22,13 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :meeting
+  has_one :notification, as: :notifiable, dependent: :destroy
+
+  after_create_commit :create_notifications
+
+  private
+
+  def create_notifications
+    Notification.create(notifiable: self, user: meeting.user)
+  end
 end

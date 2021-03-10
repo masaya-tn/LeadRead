@@ -27,5 +27,8 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show]
   resource :profile, only: %i[index edit update]
+  resources :notifications do
+    resource :read, only: %i[create]
+  end
   
 end

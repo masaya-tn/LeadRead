@@ -9,19 +9,24 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.header
       ul.navbar-nav.ml-auto
         li.nav-item
           a.nav-link
-            = link_to '投稿', search_books_path
+            = link_to search_books_path
+              i.fas.fa-pencil-alt = " 投稿"
         li.nav-item
           a.nav-link
-            = link_to 'アクション', action_plans_path  
+            = link_to action_plans_path  
+              i.fas.fa-clipboard-list = " アクションプラン"
         li.nav-item
           a.nav-link
-            = link_to '読書会', meetings_path
+            = link_to meetings_path
+              i.fas.fa-users = " 読書会"
         li.nav-item
           a.nav-link
-            = link_to 'マイページ', user_path(current_user.id)
+            = link_to user_path(current_user.id)
+              i.fas.fa-smile = " マイページ"
         li.nav-item
           a.nav-link
-            = link_to 'ログアウト', destroy_user_session_path, method: :delete
+            = link_to destroy_user_session_path, method: :delete
+              i.fas.fa-sign-out-alt = " ログアウト"
   .dropdown 
     a#dropdownMenuButton.nav-link.position-relative href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
       = render 'shared/unread_badge'

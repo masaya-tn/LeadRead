@@ -1,0 +1,5 @@
+h2 = "#{@user.username}さん、今週はアクションプランをどれだけ実行できましたか？"
+- @user.action_plans.each do |action_plan|
+  - if action_plan.notion
+    h6 = "#{action_plan.book_title}"
+    p = "#{action_plan.action_content}"

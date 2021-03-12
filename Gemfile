@@ -39,6 +39,10 @@ gem 'omniauth-twitter'
 gem 'ransack'
 gem 'dotenv-rails'
 gem "omniauth-rails_csrf_protection"
+gem "letter_opener_web"
+gem "config"
+gem "whenever", require: false
+gem "delayed_job_active_record"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

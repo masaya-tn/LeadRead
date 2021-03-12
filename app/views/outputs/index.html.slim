@@ -11,7 +11,7 @@
                 = image_tag output.book_image, size: "100x140"
               - else 
                 = output.book_title
-            .output_title
+            .small_title
               = output.title
 
   = paginate @outputs   

@@ -30,5 +30,9 @@ Rails.application.routes.draw do
   resources :notifications do
     resource :read, only: %i[create]
   end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
   
 end

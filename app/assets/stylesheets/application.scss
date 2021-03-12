@@ -2,6 +2,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'header';
+@import 'outputs';
 
 
 // .book-card:hover {
@@ -427,5 +428,14 @@ footer .copyright {
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
+}
+
+.card {
+  
+}
+
+.output_book {
+  margin-bottom: 20px;
+  
 }
 

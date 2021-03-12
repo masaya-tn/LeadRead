@@ -1,22 +1,19 @@
-.card.mb-3
-  .row.no-gutters 
-    .col-md-4 
-      - if @output.book_image.present?  
-        = image_tag @output.book_image
-    .col-md-8
-      .card-body
-        = link_to user_path(@output.user)
-          - if @output.user.avatar.present?
-            = image_tag @output.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
-          = @output.user.username
-        .card-title = "タイトル: #{@output.book_title}"
-        .card-text
-          = "著者:"
-          - if @output.author.instance_of?(Array)
-            - @output.author.each do |author|
-              = author
-          - else 
-            = @output.author
+.row.no-gutters 
+  .col-md-4 
+    - if @output.book_image.present?  
+      = image_tag @output.book_image
+  .col-md-8  
+    = link_to user_path(@output.user)
+      - if @output.user.avatar.present?
+        = image_tag @output.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+      = @output.user.username
+    = "タイトル: #{@output.book_title}"      
+    = "著者:"
+    - if @output.author.instance_of?(Array)
+      - @output.author.each do |author|
+        = author
+    - else 
+      = @output.author
   = @output.body
   
 

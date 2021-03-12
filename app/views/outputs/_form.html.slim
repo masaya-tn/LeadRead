@@ -8,8 +8,9 @@
         .card-title = "タイトル: #{@book_title}"
         .card-text
           = "著者:"
-          - @authors.each do |author|
-            = author
+          - if authors.present?
+            - authors.each do |author|
+              = author
 = form_with model: output, local: true do |f|
   .form-group.row
     label.col-sm-2.col-form-label 
@@ -22,7 +23,7 @@
     .col-sm-10 
       = f.text_area :body, class: 'form-control'
   = f.hidden_field :book_title, :value => @book_title
-  = f.hidden_field :author, :value => @authors
+  = f.hidden_field :author, :value => authors
   = f.hidden_field :book_image, :value => @book_image
   = f.submit '投稿', class: 'btn btn-outline-info'
   

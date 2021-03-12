@@ -1,27 +1,32 @@
-.row.no-gutters 
-  .col-md-4 
+.row.no-gutters   
+  .col-md-4.book_detail
     - if @output.book_image.present?  
-      = image_tag @output.book_image
-  .col-md-8  
+      = image_tag @output.book_image, size: '150x220'
+  .col-md-8.book_detail
+    .col-12
+      h3 = "#{@output.book_title}"
+      .col-3 
+        = "著者"
+      .col-8
+        - if @output.author.instance_of?(Array)
+          - @output.author.each do |author|
+            = author
+        - else 
+          = @output.author
+.row 
+  .col-12
     = link_to user_path(@output.user)
       - if @output.user.avatar.present?
         = image_tag @output.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
-      = @output.user.username
-    = "タイトル: #{@output.book_title}"      
-    = "著者:"
-    - if @output.author.instance_of?(Array)
-      - @output.author.each do |author|
-        = author
-    - else 
-      = @output.author
+      = @output.user.username  
+.output_content
   = @output.body
-  
 
-
-  - if current_user&.own?(@output)
-    = link_to edit_output_path(@output)
-      = "編集"
-    = link_to output_path(@output), method: :delete, data: { confirm: '本当に削除しますか？' } do
-      = "削除"
-  
-  = render 'like_area', output: @output 
+- if current_user&.own?(@output)
+  = link_to edit_output_path(@output)
+    = "編集"
+  = link_to output_path(@output), method: :delete, data: { confirm: '本当に削除しますか？' } do
+    = "削除"
+    
+= @output.likes.count
+= render 'like_area', output: @output 

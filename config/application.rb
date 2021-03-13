@@ -1,5 +1,4 @@
 require_relative 'boot'
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -17,6 +16,16 @@ module LeadRead
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     config.active_job.queue_adapter = :delayed_job
+
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false
+      end
+    end
+       
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

@@ -1,9 +1,29 @@
-= @action_plan.book_title
-- if @action_plan.book_image.present?
-  = image_tag @action_plan.book_image
+.card.mb-3 
+  .row.no-gutters 
+    .col-md-4 
+      - if @action_plan.book_image.present?
+        = image_tag @action_plan.book_image
+    .col-md-8 
+      .card-body 
+        .card-title = "タイトル: #{@action_plan.book_title}"
+          
 = form_with model:@action_plan,local: true do |f|
-  = f.check_box :notion
-  = f.text_area :action_content
+  .form-group.row 
+    label.col-md-4.col-form-label
+      = "メール通知を受ける"
+    .col-md-8
+      = f.check_box :notion
+    .notion_caution
+      = "メール通知をオンにすると毎週日曜日にアクションプランの確認メールが届きます"
+  .form-group.row 
+    label.col-md-4.col-form-label
+      = "アクションプラン"
+    .col-md-8 
+      = f.text_area :action_content, class: 'form-control'
   = f.hidden_field :book_title, :value => @action_plan.book_title
   = f.hidden_field :book_image, :value => @action_plan.book_image
-  = f.submit '登録', class: 'btn btn-primary btn-raised'
+  = f.submit '登録', class: 'btn btn-outline-info rounded'
+
+
+
+

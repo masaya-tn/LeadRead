@@ -3,11 +3,16 @@
 .container
   .row
     - @outputs.each do |output|
-      .col-md-3
-        .card
+      .col-md-3.col-xs-12      
+        .output_book 
           = link_to output_path(output)
-            - if output.book_image.present?
-              = image_tag output.book_image
-            = output.title
+            .col-md-12
+              - if output.book_image.present?
+                = image_tag output.book_image, size: "100x140"
+              - else 
+                = output.book_title
+            .small_title
+              = output.title
+
   = paginate @outputs   
             

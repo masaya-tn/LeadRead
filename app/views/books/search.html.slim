@@ -8,14 +8,21 @@
 .container
   .row
     - @books.each do |book|
-      .col-md-3
+      .col-md-3.col-xs-12
         .dropdown
-          .card.book-card.dropdown-toggle[id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-            - if book.image.present?
-             = image_tag book.image
-            = book.title
+          .dropdown-toggle[id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            .col-12
+              - if book.image.present?
+                = image_tag book.image, size: "100x140", class: "book-card"
+              - else 
+                .small_title
+                  = book.title
           .dropdown-menu[aria-labelledby="dropdownMenuLink"]
+            - @book_title = book.title 
+            - @author = book.authors 
+            - @book_image = book.image
             = link_to 'アウトプット', new_output_path(:book_title => @book_title, :author => @author, :book_image => @book_image), class: 'dropdown-item'
             = link_to 'アクション', new_action_plan_path(:book_title => @book_title, :book_image => @book_image), class: 'dropdown-item'
   = paginate @books
+
 

@@ -6,7 +6,12 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.header
       |  Menu 
       i.fas.fa-bars
     #navbarResponsive.collapse.navbar-collapse
-      ul.navbar-nav.ml-auto
+      ul.navbar-nav.ml-auto   
+        .dropdown 
+          a#dropdownMenuButton.nav-link.position-relative href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
+            = render 'shared/unread_badge'
+          #header-notifications.dropdown-menu.dropdown-menu-right.m-0.p-0 aria-labelledby="dropdownMenuButton"
+            = render 'shared/header_notifications'
         li.nav-item
           a.nav-link
             = link_to search_books_path
@@ -27,8 +32,4 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.header
           a.nav-link
             = link_to destroy_user_session_path, method: :delete
               i.fas.fa-sign-out-alt = " ログアウト"
-  .dropdown 
-    a#dropdownMenuButton.nav-link.position-relative href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
-      = render 'shared/unread_badge'
-    #header-notifications.dropdown-menu.dropdown-menu-right.m-0.p-0 aria-labelledby="dropdownMenuButton"
-      = render 'shared/header_notifications'
+    

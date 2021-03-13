@@ -1,30 +1,36 @@
-.row 
-  .column
+.row.mypage-top
+  .col-3
     - if @user.avatar.present?
       = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
-  .column
-    = @user.username
-    - if current_user.id == @user.id
-      = link_to 'プロフィール編集', edit_profile_path(@user.id), class: 'btn btn-info btn-raised rounded'
-    - elsif current_user 
-      = render 'follow_area', user: @user
+  .col-9
+    .row 
+      .col-8.mypage-name
+        = @user.username
+      .col-4.mypage-btn
+        - if current_user.id == @user.id
+          = link_to 'プロフィール編集', edit_profile_path(@user.id)
+        - elsif current_user 
+          = render 'follow_area', user: @user
+    p
+      = @user.followings.count
+      a.btn.mypage-btn aria-controls="multiCollapseFollow" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollow" role="button" フォロー
+      = @user.followers.count
+      a.btn.mypage-btn aria-controls="multiCollapseFollower" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollower" role="button" フォロワー
 
-p   
-  a.btn aria-controls="multiCollapseFollow" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollow" role="button" フォロー
-  a.btn aria-controls="multiCollapseFollower" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollower" role="button" フォロワー
+
 .row 
   .col 
     #multiCollapseFollow.collapse.multi-collapse 
-      - if current_user.followings.present?
-        - current_user.followings.each do |following|
+      - if @user.followings.present?
+        - @user.followings.each do |following|
           = link_to user_path(following)
             = following.username
       - else
         = "フォローしているユーザーはいません"
   .col 
     #multiCollapseFollower.collapse.multi-collapse
-      - if current_user.followers.present?
-        - current_user.followers.each do |follower|
+      - if @user.followers.present?
+        - @user.followers.each do |follower|
           = link_to user_path(follower)
             = follower.username
       - else

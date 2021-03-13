@@ -13,7 +13,7 @@
           .dropdown-toggle[id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
             .col-12
               - if book.image.present?
-                = image_tag book.image, size: "100x140"
+                = image_tag book.image, size: "100x140", class: "book-card"
               - else 
                 .small_title
                   = book.title

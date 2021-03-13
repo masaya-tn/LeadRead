@@ -7,3 +7,32 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '投稿'
+      comment: 'コメント'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        username: 'ユーザー名'
+        avatar: 'アバター'
+        notification_on_comment: 'コメント時の通知メール'
+        notification_on_like: 'いいね時の通知メール'
+        notification_on_follow: 'フォロー時の通知メール'
+      post:
+        images: '画像'
+        body: '本文'
+      comment:
+        body: 'コメント'
+        user_id: 'ユーザー'
+        post_id: '投稿'

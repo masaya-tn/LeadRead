@@ -42,25 +42,25 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe "バリデーション" do
     it "メール、パスワードがある場合有効" do
-      user = FactoryBot.build(:user)
+      user = build(:user)
       expect(user).to be_valid
     end
 
     it "メールが無い場合無効" do
-      user = FactoryBot.build(:user, email: nil)
+      user = build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include("を入力してください")
     end
 
     it "パスワードが無い場合無効" do
-      user = FactoryBot.build(:user, password: nil)
+      user = build(:user, password: nil)
       user.valid?
       expect(user.errors[:password]).to include("を入力してください")
     end
 
     it "メールアドレスは一意であること" do
-      user1 = FactoryBot.create(:user)
-      user2 = FactoryBot.build(:user, email: user1.email)
+      user1 = create(:user)
+      user2 = build(:user, email: user1.email)
       user2.valid?
       expect(user2.errors[:email]).to include("はすでに存在します") 
     end
@@ -69,13 +69,11 @@ RSpec.describe User, type: :model do
   describe "インスタンスメソッド" do
     let(:user_a) { create(:user) }
     let(:user_b) { create(:user) }
-    let(:user_c) { create(:user) }
     let(:output_by_user_a) { create(:output, user: user_a) }
     let(:output_by_user_b) { create(:output, user: user_b) }
-    let(:output_by_user_c) { create(:output, user: user_c) }
     let(:meeting_by_user_a) { create(:meeting, user: user_a) }
     let(:meeting_by_user_b) { create(:meeting, user: user_b) }
-    let(:meeting_by_user_c) { create(:meeting, user: user_c) }
+
     describe 'own?' do
       context '自分のオブジェクトの場合' do
         it 'trueを返す' do

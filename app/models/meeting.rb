@@ -40,20 +40,12 @@ class Meeting < ApplicationRecord
       end
     end
 
-  def requested_users
-    requesting_users
-  end
-
   def permit?(user)
     participants.exists?(user_id: user.id)
   end
 
   def permit(user)
     participanting_users << user
-  end
-
-  def permited_users
-    participanting_users
   end
 
   def after_now?

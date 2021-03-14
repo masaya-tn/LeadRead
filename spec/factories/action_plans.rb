@@ -1,7 +1,3 @@
-# == Schema Information
-#
-# Table name: actions
-#
 #  id             :bigint           not null, primary key
 #  action_content :text(65535)      not null
 #  book_image     :string(255)
@@ -11,18 +7,11 @@
 #  updated_at     :datetime         not null
 #  user_id        :bigint
 #
-# Indexes
-#
-#  index_actions_on_user_id  (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
-#
-require 'test_helper'
 
-class ActionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+FactoryBot.define do
+  factory :action_plan do
+    action_content { 'aaaaaaaaa' }
+    book_title { 'タイトル' }
+    user
+  end
 end

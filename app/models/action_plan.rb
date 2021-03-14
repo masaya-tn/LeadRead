@@ -21,4 +21,6 @@
 #
 class ActionPlan < ApplicationRecord
   belongs_to :user
+
+  validates :action_content, presence: true
 end

@@ -24,6 +24,8 @@ class Message < ApplicationRecord
   belongs_to :meeting
   has_one :notification, as: :notifiable, dependent: :destroy
 
+  validates :body, presence: true
+
   after_create_commit :create_notifications
 
   private

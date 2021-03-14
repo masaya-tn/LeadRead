@@ -6,8 +6,6 @@
 #  avatar                 :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
-#  image                  :string(255)
-#  name                   :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -22,13 +20,11 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+FactoryBot.define do
+  factory :user do
+    email { Faker::Internet.unique.email }
+    password { '12345678' }
+    password_confirmation { '12345678' }
+    username { Faker::Name.name }
+  end
+end

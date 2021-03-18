@@ -1,0 +1,17 @@
+.row 
+  .col 
+    #multiCollapseFollow.collapse.multi-collapse 
+      - if user.followings.present?
+        - user.followings.each do |following|
+          = link_to user_path(following)
+            = following.username
+      - else
+        = "フォローしているユーザーはいません"
+  .col 
+    #multiCollapseFollower.collapse.multi-collapse
+      - if user.followers.present?
+        - user.followers.each do |follower|
+          = link_to user_path(follower)
+            = follower.username
+      - else
+        = "フォロワーはいません"

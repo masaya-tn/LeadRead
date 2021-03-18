@@ -143,17 +143,17 @@ img::-moz-selection {
   }
   #mainNav .navbar-brand {
     padding: 10px 20px;
-    color: #fff;
+    color: black;
   }
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
   }
   #mainNav .navbar-nav > li.nav-item > a {
     padding: 10px 20px;
-    color: #fff;
+    color: rgb(0, 0, 0);
   }
   #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
   }
 }
 
@@ -198,7 +198,7 @@ header.masthead {
   background-attachment: scroll;
   position: relative;
   background-size: cover;
-  background-image: url('home-bg.jpg')
+  background-image: url('cup-of-tea-and-cookies.jpg')
 }
 
 header.masthead .overlay {

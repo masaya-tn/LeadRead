@@ -19,5 +19,10 @@
                 .col-8
                   .action_plan_card_text
                     = action_plan.action_content
+                  .action_plan_card_notion
+                      - if action_plan.notion
+                        = "メール通知オン" 
+                      - else 
+                        = "メール通知オフ"    
 
 

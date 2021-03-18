@@ -31,7 +31,7 @@ class Meeting < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :capacity, presence: true
+  validates :capacity, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
   validates :date, presence: true
   validate :before_today
     def before_today

@@ -28,6 +28,8 @@ require 'capybara/rspec'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -60,6 +62,14 @@ RSpec.configure do |config|
   config.include SystemHelper, type: :system
 
   config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include RequestSpecHelper, type: :request
+  # config.include RequestSpecHelper, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
+
+  Rails.logger = Logger.new STDOUT
+  
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
+    end
+  end
 end

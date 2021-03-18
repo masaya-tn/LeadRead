@@ -1,78 +1,30 @@
-.row.mypage-top
-  .col-3
-    - if @user.avatar.present?
-      = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
-  .col-9
-    .row 
-      .col-8.mypage-name
-        = @user.username
-      .col-4.mypage-btn
-        - if current_user.id == @user.id
-          = link_to 'プロフィール編集', edit_profile_path(@user.id)
-        - elsif current_user 
-          = render 'follow_area', user: @user
-    p
-      = @user.followings.count
-      a.btn.mypage-btn aria-controls="multiCollapseFollow" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollow" role="button" フォロー
-      = @user.followers.count
-      a.btn.mypage-btn aria-controls="multiCollapseFollower" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollower" role="button" フォロワー
+.mypage-container
+  .row.mypage-top
+    .col-3
+      - if @user.avatar.present?
+        = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
+    .col-9
+      .row 
+        .col-8.mypage-name
+          = @user.username
+        .col-4.mypage-btn
+          - if current_user.id == @user.id
+            = link_to 'プロフィール編集', edit_profile_path(@user.id)
+            .dropdown.notification-icon 
+              a#dropdownMenuButton.nav-link.position-relative href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
+                = render 'shared/unread_badge'
+                = ' 通知'
+              #header-notifications.dropdown-menu.dropdown-menu-right.m-0.p-0 aria-labelledby="dropdownMenuButton"
+                = render 'shared/header_notifications'
+          - elsif current_user 
+            = render 'follow_area', user: @user
+      p
+        = @user.followings.count
+        a.btn.mypage-btn aria-controls="multiCollapseFollow" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollow" role="button" フォロー
+        = @user.followers.count
+        a.btn.mypage-btn aria-controls="multiCollapseFollower" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollower" role="button" フォロワー
 
-
-.row 
-  .col 
-    #multiCollapseFollow.collapse.multi-collapse 
-      - if @user.followings.present?
-        - @user.followings.each do |following|
-          = link_to user_path(following)
-            = following.username
-      - else
-        = "フォローしているユーザーはいません"
-  .col 
-    #multiCollapseFollower.collapse.multi-collapse
-      - if @user.followers.present?
-        - @user.followers.each do |follower|
-          = link_to user_path(follower)
-            = follower.username
-      - else
-        = "フォロワーはいません"
-
-#accordionMypage.accordion
-  .card
-    #headingOne.card-header
-      h5.mb-0
-        button.btn.btn-link.collapsed[type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
-          | アウトプット
-    #collapseOne.collapse[aria-labelledby="headingOne" data-parent="#accordionMypage"]
-      .card-body
-         - @user.outputs.each do |output|
-            .card
-              = link_to output_path(output)
-                - if output.book_image.present?
-                  = image_tag output.book_image
-                = output.title
-  .card
-    #headingTwo.card-header
-      h5.mb-0
-        button.btn.btn-link.collapsed[type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"]
-          |  アクションプラン
-    #collapseTwo.collapse[aria-labelledby="headingTwo" data-parent="#accordionMypage"]
-      .card-body
-        - @user.action_plans.each do |action_plan|
-            .card
-              = link_to action_plan_path(action_plan)
-                - if action_plan.book_image.present?
-                  = image_tag action_plan.book_image
-                = action_plan.action_content
-  .card
-    #headingThree.card-header
-      h5.mb-0
-        button.btn.btn-link.collapsed[type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"]
-          |  読書会
-    #collapseThree.collapse[aria-labelledby="headingThree" data-parent="#accordionMypage"]
-      .card-body
-        - @user.meetings.each do |meeting|
-            .card
-              = link_to meeting_path(meeting)
-                = meeting.title
+  = render 'user_follow', user: @user
+  = render 'user_contents', user: @user
 
 

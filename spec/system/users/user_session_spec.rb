@@ -10,7 +10,7 @@ RSpec.describe 'ログイン、ログアウト', type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: '12345678'
         click_button 'ログイン'
-        expect(current_path).to eq outputs_path
+        expect(current_path).to eq root_path
         expect(page).to have_content 'ログインしました'
       end
     end
@@ -21,8 +21,8 @@ RSpec.describe 'ログイン、ログアウト', type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: '87654321'
         click_button 'ログイン'
-        expect(current_path).to eq outputs_path
-        expect(page).to have_content 'ログインに失敗しました'
+        expect(current_path).to eq new_user_session_path
+        expect(page).to have_content 'メールアドレス もしくはパスワードが不正です。'
       end
     end
   end

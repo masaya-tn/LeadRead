@@ -23,5 +23,4 @@ class Participant < ApplicationRecord
   belongs_to :user
   belongs_to :meeting
   has_one :notification, as: :notifiable, dependent: :destroy
-
 end

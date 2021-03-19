@@ -68,7 +68,7 @@ RSpec.describe Meeting, type: :model do
     let(:meeting_by_user_a) { create(:meeting, user: user_a) }
     describe 'before_today' do
       it '過去の日付は無効である' do
-        meeting = build(:meeting, date: Date.today - 1 )
+        meeting = build(:meeting, date: Date.today - 1)
         meeting.valid?
         expect(meeting.errors[:date]).to include('過去の日付は登録できません')
       end
@@ -88,7 +88,6 @@ RSpec.describe Meeting, type: :model do
           meeting_by_user_a.permit(user_b)
           expect(meeting_by_user_a.permit?(user_b)).to be true
         end
-        
       end
 
       context '許可されていない場合' do
@@ -98,5 +97,4 @@ RSpec.describe Meeting, type: :model do
       end
     end
   end
-  
 end

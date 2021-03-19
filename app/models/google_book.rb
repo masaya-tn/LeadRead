@@ -25,7 +25,7 @@ class GoogleBook
         authors: @volume_info['authors'],
         image: image_url,
         published_at: @volume_info['publishedDate'],
-        title: @volume_info['title'],
+        title: @volume_info['title']
       )
     end
 
@@ -85,7 +85,7 @@ class GoogleBook
     Book.new(
       googlebooksapi_id: googlebooksapi_id,
       published_at: published_at,
-      title: title,
+      title: title
     )
   end
 end

@@ -20,7 +20,7 @@ class Relationship < ApplicationRecord
   has_one :notification, as: :notifiable, dependent: :destroy
 
   validates :follower_id, presence: true
-  validates :followed_id, presence: true  
+  validates :followed_id, presence: true
 
   after_create_commit :create_notifications
 

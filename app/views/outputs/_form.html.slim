@@ -11,18 +11,18 @@
           - if authors.present?
             - authors.each do |author|
               = author
-= form_with model: output, local: true do |f|
+= form_with model: output, local: true, id: 'output_form' do |f|
   .form-group.row
     label.col-sm-2.col-form-label 
       = "タイトル"
     .col-sm-10 
-      = f.text_field :title, class: 'form-control'
+      = f.text_field :title, class: 'form-control', id: 'title_form'
   .form-group.row
     label.col-sm-2.col-form-label 
       = "本文"
     .col-sm-10 
-      = f.text_area :body, class: 'form-control'
-  = f.hidden_field :book_title, :value => @book_title
+      = f.text_area :body, class: 'form-control', id: 'body_form'
+  = f.hidden_field :book_title, :value => @book_title, id: 'book_title_form'
   = f.hidden_field :author, :value => authors
   = f.hidden_field :book_image, :value => @book_image
   = f.submit '投稿', class: 'btn btn-outline-info'

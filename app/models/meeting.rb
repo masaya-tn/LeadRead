@@ -31,14 +31,12 @@ class Meeting < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :capacity, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
+  validates :capacity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :date, presence: true
   validate :before_today
-    def before_today
-      unless date == nil
-        errors.add(:date, '過去の日付は登録できません') if date < Date.today.to_time
-      end
-    end
+  def before_today
+    errors.add(:date, '過去の日付は登録できません') if !date == (nil) && (date < Date.today.to_time)
+  end
 
   def permit?(user)
     participants.exists?(user_id: user.id)

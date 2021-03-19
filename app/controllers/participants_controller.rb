@@ -9,8 +9,6 @@ class ParticipantsController < ApplicationController
     @request = Requesting.find_by(user_id: @user.id, meeting_id: @meeting.id)
     @request.destroy!
   end
-  
-  def destroy
-    
-  end
+
+  def destroy; end
 end

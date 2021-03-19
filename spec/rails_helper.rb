@@ -1,9 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot'
 require 'capybara/rspec'
@@ -66,10 +66,8 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :system
 
   Rails.logger = Logger.new STDOUT
-  
+
   config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
-    end
+    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080] if example.metadata[:type] == :system
   end
 end

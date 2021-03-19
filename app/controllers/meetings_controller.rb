@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
   def new
     @meeting = Meeting.new
   end
-  
+
   def create
     @meeting = current_user.meetings.build(meeting_params)
     if @meeting.save

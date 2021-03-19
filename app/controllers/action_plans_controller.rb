@@ -1,6 +1,6 @@
 class ActionPlansController < ApplicationController
   def index
-    @action_plans = current_user.action_plans
+    @action_plans = current_user.action_plans.order(created_at: :desc)
   end
 
   def new

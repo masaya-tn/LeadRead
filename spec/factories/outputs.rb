@@ -10,7 +10,7 @@
 
 FactoryBot.define do
   factory :output do
-    title { 'タイトル' }
+    title { Faker::Book.title }
     body { 'aaaaaaaaaaaaaaaaaaaaa' }
     book_title { Faker::Book.title }
     user

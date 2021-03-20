@@ -12,14 +12,14 @@
     label.col-md-4.col-form-label
       = "メール通知を受ける"
     .col-md-8
-      = f.check_box :notion
+      = f.check_box :notion, id: 'mail_check_box'
     .notion_caution
       = "メール通知をオンにすると毎週日曜日にアクションプランの確認メールが届きます"
   .form-group.row 
     label.col-md-4.col-form-label
       = "アクションプラン"
     .col-md-8 
-      = f.text_area :action_content, class: 'form-control'
+      = f.text_area :action_content, class: 'form-control', id: 'content_form'
   = f.hidden_field :book_title, :value => book_title
   = f.hidden_field :book_image, :value => book_image
   = f.submit '登録', class: 'btn btn-outline-info rounded'

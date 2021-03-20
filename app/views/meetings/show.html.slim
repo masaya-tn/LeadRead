@@ -1,5 +1,5 @@
 .card
-  = link_to user_path
+  = link_to user_path(@meeting.user)
     - if @meeting.user.avatar.present?
       = image_tag @meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
     = @meeting.user.username
@@ -17,8 +17,10 @@
     - @meeting.participanting_users.each do |permited_user|
       = permited_user.username
   
-    = link_to '編集', edit_meeting_path(@meeting)
-    = link_to '削除', meeting_path(@meeting), method: :delete, data: { confirm: '本当に削除しますか？' } 
+    = link_to edit_meeting_path(@meeting), class: 'edit-button' do
+      = icon 'far', 'edit', class: 'fa-lg'
+    = link_to meeting_path(@meeting), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
+      = icon 'far', 'trash-alt', class: 'fa-lg'
   - elsif current_user
     = render 'request_area', meeting: @meeting
 

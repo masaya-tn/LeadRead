@@ -1,20 +1,22 @@
-.container.w-75
-  h6
-    | 読書会検索
-  = render 'search_form'
-  .row
-    - @meetings.each do |meeting|
-      - if meeting.after_now?
-        .col-md-12
-          .card
-            = link_to meeting_path(meeting)
-              .card-body 
-                - if meeting.user.avatar.present?
-                  = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
-                .card-title
-                  = meeting.title
-                .card-body
-                  = meeting.description
-  = paginate @meetings
+h6
+  | 読書会検索
+= render 'search_form'
+.row
+  - @meetings.each do |meeting|
+    - if meeting.after_now?
+      .col-md-12
+        .card
+          = link_to meeting_path(meeting)
+            .card-body 
+              - if meeting.user.avatar.present?
+                = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+              .card-title
+                = meeting.title
+              .card-body
+                = meeting.description
+= paginate @meetings
 
-= link_to '新規作成', new_meeting_path
+= link_to new_meeting_path do
+  .new-meeting-btn
+    i.fa.fa-plus
+

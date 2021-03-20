@@ -26,7 +26,6 @@ RSpec.describe 'アウトプット', type: :system do
     it '自分の投稿に編集ボタンが表示されること' do
       visit output_path(output_by_user)
       expect(page).to have_css('.edit-button')
-      
     end
 
     it '他人の投稿には編集ボタンが表示されないこと' do
@@ -34,7 +33,7 @@ RSpec.describe 'アウトプット', type: :system do
       expect(page).not_to have_css('.edit-button')
     end
 
-    it '投稿が編集できること' do
+    it '投稿が更新できること' do
       visit edit_output_path(output_by_user)
       find('#title_form').fill_in(with: '更新テスト')
       find('#body_form').fill_in(with: 'This is an example updated output')

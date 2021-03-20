@@ -5,11 +5,23 @@
 @import 'outputs';
 @import 'action_plan';
 @import 'mypage';
+@import 'meetings';
 
 
 // .book-card:hover {
 //   transform: scale(1.1, 1.1);
 // }
+
+.application-container {
+  width: 65%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:500px) {
+  .application-container {
+    width: 100%;
+  }
+}
 
 .book-card:hover {
   opacity: 0.5;

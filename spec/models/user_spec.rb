@@ -38,35 +38,34 @@
 
 require 'rails_helper'
 
-
 RSpec.describe User, type: :model do
-  describe "バリデーション" do
-    it "メール、パスワードがある場合有効" do
+  describe 'バリデーション' do
+    it 'メール、パスワードがある場合有効' do
       user = build(:user)
       expect(user).to be_valid
     end
 
-    it "メールが無い場合無効" do
+    it 'メールが無い場合無効' do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("を入力してください")
+      expect(user.errors[:email]).to include('を入力してください')
     end
 
-    it "パスワードが無い場合無効" do
+    it 'パスワードが無い場合無効' do
       user = build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include("を入力してください")
+      expect(user.errors[:password]).to include('を入力してください')
     end
 
-    it "メールアドレスは一意であること" do
+    it 'メールアドレスは一意であること' do
       user1 = create(:user)
       user2 = build(:user, email: user1.email)
       user2.valid?
-      expect(user2.errors[:email]).to include("はすでに存在します") 
+      expect(user2.errors[:email]).to include('はすでに存在します')
     end
   end
 
-  describe "インスタンスメソッド" do
+  describe 'インスタンスメソッド' do
     let(:user_a) { create(:user) }
     let(:user_b) { create(:user) }
     let(:output_by_user_a) { create(:output, user: user_a) }
@@ -80,7 +79,6 @@ RSpec.describe User, type: :model do
           expect(user_a.own?(output_by_user_a)).to be true
         end
       end
-    
 
       context '自分以外のオブジェクトの場合' do
         it 'falseを返す' do

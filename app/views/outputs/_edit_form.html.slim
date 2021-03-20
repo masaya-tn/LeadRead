@@ -18,12 +18,12 @@
     label.col-sm-2.col-form-label 
       = "タイトル"
     .col-sm-10 
-      = f.text_field :title, class: 'form-control'
+      = f.text_field :title, class: 'form-control', id: 'title_form'
   .form-group.row
     label.col-sm-2.col-form-label 
       = "本文"
     .col-sm-10 
-      = f.text_area :body, class: 'form-control'
+      = f.text_area :body, class: 'form-control', id: 'body_form'
   = f.hidden_field :book_title, :value => output.book_title
   = f.hidden_field :author, :value => output.author
   = f.hidden_field :book_image, :value => output.book_image

@@ -1,7 +1,7 @@
 nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
   .container
-    a.navbar-brand[href="index.html"]
-      | Lead Read
+    nav.navbar-light
+      = link_to 'Lead Read', root_path, class: 'navbar-brand'
     button.navbar-toggler.navbar-toggler-right[type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"]
       |  Menu 
       i.fas.fa-bars

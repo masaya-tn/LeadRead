@@ -3,5 +3,7 @@
   = image_tag @action_plan.book_image
 = @action_plan.action_content
 
-= link_to '編集', edit_action_plan_path(@action_plan)
-= link_to '削除', action_plan_path(@action_plan), method: :delete, data: { confirm: '本当に削除しますか？' } 
+= link_to edit_action_plan_path(@action_plan) do
+  = icon 'far', 'edit', class: 'fa-lg'
+= link_to action_plan_path(@action_plan), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do 
+  = icon 'far', 'trash-alt', class: 'fa-lg'

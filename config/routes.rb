@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root "outputs#index"
   end
 
-  root 'toppage#index'
+  root 'toppages#index'
 
   resources :outputs
   get 'output_search', to: 'outputs#search'

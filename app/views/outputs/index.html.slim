@@ -1,18 +1,16 @@
 = render 'search_form'
-
-.container
-  .row
-    - @outputs.each do |output|
-      .col-md-3.col-xs-12      
-        .output_book 
-          = link_to output_path(output)
-            .col-md-12
-              - if output.book_image.present?
-                = image_tag output.book_image, size: "100x140"
-              - else 
-                = output.book_title
-            .small_title
-              = output.title
+.row
+  - @outputs.each do |output|
+    .col-md-3.col-xs-12      
+      .output_book 
+        = link_to output_path(output)
+          .col-md-12
+            - if output.book_image.present?
+              = image_tag output.book_image, size: "100x140"
+            - else 
+              = output.book_title
+          .small_title
+            = output.title
 
   = paginate @outputs   
             

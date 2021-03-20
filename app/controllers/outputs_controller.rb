@@ -1,6 +1,8 @@
 class OutputsController < ApplicationController
+  before_action :require_current_user
+
   def index
-    @outputs = Output.all.page(params[:page]).per(20)
+    @outputs = Output.all.page(params[:page]).per(20).order(created_at: :desc)
     @q = Output.ransack(params[:q])
   end
 
@@ -32,7 +34,6 @@ class OutputsController < ApplicationController
 
   def edit
     @output = current_user.outputs.find(params[:id])
-    
   end
 
   def update
@@ -59,5 +60,11 @@ class OutputsController < ApplicationController
 
   def search_params
     params.require(:q).permit(:title_cont, :book_title_cont)
+  end
+
+  def require_current_user
+    unless current_user
+      redirect_to controller: :toppages, action: :index
+    end
   end
 end

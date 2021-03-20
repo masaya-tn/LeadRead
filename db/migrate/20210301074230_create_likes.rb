@@ -5,7 +5,7 @@ class CreateLikes < ActiveRecord::Migration[5.2]
       t.references :output, foreign_key: true
 
       t.timestamps
-      t.index [:user_id, :output_id], unique: true
+      t.index %i[user_id output_id], unique: true
     end
   end
 end

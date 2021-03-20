@@ -23,10 +23,10 @@
   = @output.body
 
 - if current_user&.own?(@output)
-  = link_to edit_output_path(@output)
-    = "編集"
-  = link_to output_path(@output), method: :delete, data: { confirm: '本当に削除しますか？' } do
-    = "削除"
+  = link_to edit_output_path(@output), class: 'edit-button' do
+    = icon 'far', 'edit', class: 'fa-lg'
+  = link_to output_path(@output), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
+    = icon 'far', 'trash-alt', class: 'fa-lg'
     
 = @output.likes.count
 = render 'like_area', output: @output 

@@ -1,4 +1,4 @@
 - if meeting.capacity <= meeting.participanting_users.count
   = "定員に達しました"
 - else
-  = link_to '参加申請', requestings_path(meeting_id: meeting.id), class: 'btn btn-info btn-raised', method: :post, remote: true 
+  = link_to '参加申請', requestings_path(meeting_id: meeting.id), class: 'btn btn-outline-info btn-raised rounded', method: :post, remote: true 

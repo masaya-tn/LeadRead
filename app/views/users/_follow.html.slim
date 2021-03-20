@@ -1,1 +1,3 @@
-= link_to 'フォロー', relationships_path(followed_id: user.id), class: 'btn btn-info btn-raised rounded', method: :post, remote: true
+= link_to relationships_path(followed_id: user.id), class: 'btn btn-outline-info btn-raised rounded follow-button', method: :post, remote: true do 
+  | フォロー
+  

@@ -5,7 +5,7 @@ class CreateParticipants < ActiveRecord::Migration[5.2]
       t.references :meeting, foreign_key: true
 
       t.timestamps
-      t.index [:user_id, :meeting_id], unique: true
+      t.index %i[user_id meeting_id], unique: true
     end
   end
 end

@@ -1,6 +1,13 @@
-= form_with model: meeting, local: true do |f|
-  = f.text_field :title, placeholder: 'タイトル', id: 'title_form'
-  = f.text_area :description, placeholder: '詳細', id: 'description_form'
-  = f.number_field :capacity, placeholder: '人数', id: 'capacity_form'
-  = f.datetime_field :date, placeholder: '開催日', id: 'date_form'
-  = f.submit '投稿', class: 'btn btn-info btn-raised rounded'
+.meeting-form-container
+  = form_with model: meeting, local: true do |f|
+    .form-group
+      = f.text_field :title, class: 'form-control meeting-title-form', placeholder: 'タイトル', id: 'title_form'
+    .form-group
+      = f.text_area :description, class: 'form-control meeting-form', placeholder: '詳細', id: 'description_form'
+    .row
+      .form-group.col-6
+        = f.number_field :capacity, class: 'form-control meeting-form', placeholder: '人数', id: 'capacity_form'
+      .form-group.col-6
+        = f.datetime_field :date, class: 'form-control meeting-form', placeholder: '開催日', id: 'date_form'
+    = f.submit '投稿', class: 'btn btn-info btn-raised rounded'
+

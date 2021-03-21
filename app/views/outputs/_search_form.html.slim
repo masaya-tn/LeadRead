@@ -4,5 +4,6 @@
       = f.search_field :title_cont, class: 'form-control', placeholder: 'アウトプット'
     .col
       = f.search_field :book_title_cont, class: 'form-control', placeholder: '本'
-    .col-md-2
-      = f.submit 'search', class: 'btn btn-info btn-raised rounded'
+    .col
+      = button_tag type: 'submit', class: 'btn btn-info btn-raised rounded submit-button' do 
+        i.fas.fa-search

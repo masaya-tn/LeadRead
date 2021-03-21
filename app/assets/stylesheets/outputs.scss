@@ -30,3 +30,21 @@
   padding-bottom: 10px;
 }
 
+.outputs-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:600px) {
+  .outputs-container {
+    width: 100%;
+  }
+
+  .outputs-search-form {
+    width: auto;
+  }
+}
+
+.submit-button {
+  border-radius: 50px;
+}

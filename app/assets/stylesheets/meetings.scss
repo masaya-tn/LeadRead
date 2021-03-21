@@ -13,3 +13,49 @@
     margin-top: 22px;
   }
 }
+
+.meetings-card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: large;
+}
+
+.meetings-body {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.meetings-container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:500px) {
+  .meetings-container {
+    width: 100%;
+  }
+}
+
+.meeting-header {
+  padding-top: 20px;
+  color: #00b5d1;
+}
+
+.meeting-content {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.meetings-info {
+  color: rgb(141, 141, 141);
+}
+
+.meeting-date {
+  margin-left: 250px;
+  color: rgb(143, 143, 143);
+}

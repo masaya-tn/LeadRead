@@ -1,14 +1,15 @@
-h6
-  | 検索結果
-.container
-  .row
-    - @outputs.each do |output|
-      .col-md-3.col-xs-12        
-        = link_to output_path(output)
-          .col-md-12
-            - if output.book_image.present?
-              = image_tag output.book_image, size: "100x140"
-          .small_title
-            = output.title
+.outputs-container
+  h6
+    | 検索結果
+  .container
+    .row
+      - @outputs.each do |output|
+        .col-md-3.col-xs-12        
+          = link_to output_path(output)
+            .col-md-12
+              - if output.book_image.present?
+                = image_tag output.book_image, size: "100x140"
+            .small_title
+              = output.title
 
 

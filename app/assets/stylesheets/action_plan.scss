@@ -20,3 +20,14 @@
   font-size: small;
   color: rgba(78, 206, 95, 0.897);
 }
+
+.action-plans-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:600px) {
+  .action-plans-container {
+    width: 100%;
+  }
+}

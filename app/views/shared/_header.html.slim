@@ -25,6 +25,6 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.header
               i.fas.fa-smile = " マイページ"
         li.nav-item
           a.nav-link
-            = link_to destroy_user_session_path, method: :delete
+            = link_to destroy_user_session_path, class: 'logout-button', method: :delete
               i.fas.fa-sign-out-alt = " ログアウト"
     

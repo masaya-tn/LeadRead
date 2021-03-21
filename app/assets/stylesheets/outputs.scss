@@ -1,8 +1,7 @@
 .small_title {
   font-size: 15px;
   text-align: center;
-  color: rgba(9, 161, 221, 0.788);
-  
+  margin-top: 5px;
 }
 
 .output_content {
@@ -12,4 +11,40 @@
 
 .book_detail {
   border-bottom: 1px solid rgb(0, 195, 255);
+}
+
+.outputs-border {
+  border-bottom: 1px solid rgb(216, 216, 216);
+  margin-bottom: 20px;
+}
+
+.output_book {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.outputs-heart {
+  color: rgb(0, 207, 207);
+  font-size: xx-small;
+  margin-left: 30px;
+  padding-bottom: 10px;
+}
+
+.outputs-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:600px) {
+  .outputs-container {
+    width: 100%;
+  }
+
+  .outputs-search-form {
+    width: auto;
+  }
+}
+
+.submit-button {
+  border-radius: 50px;
 }

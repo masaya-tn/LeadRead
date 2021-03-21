@@ -1,3 +1,3 @@
 = requesting_user.username
-= link_to '参加許可', participants_path(user_id: requesting_user.id, meeting_id: meeting.id), class: 'btn btn-outline-info btn-raised rounded mr-2', method: :post, remote: true
-= link_to '参加拒否', requesting_path(requesting_user.requestings.find_by(meeting_id: meeting.id), user_id: requesting_user.id), class: 'btn btn-outline-danger btn-raised rounded', method: :delete, remote: true
+= link_to '参加許可', participants_path(user_id: requesting_user.id, meeting_id: meeting.id), class: 'btn btn-outline-info btn-raised rounded mr-2 permit-button', method: :post, remote: true
+= link_to '参加拒否', requesting_path(requesting_user.requestings.find_by(meeting_id: meeting.id), user_id: requesting_user.id), class: 'btn btn-outline-danger btn-raised rounded reject-button', method: :delete, remote: true

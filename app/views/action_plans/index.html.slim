@@ -1,9 +1,9 @@
-- if @action_plans.present?
-  .row
-    - @action_plans.each do |action_plan|
-      .col-12
-        .action_plan_card
-          = link_to action_plan_path(action_plan)
+.action-plans-container
+  - if @action_plans.present?
+    .row
+      - @action_plans.each do |action_plan|
+        .col-12
+          .action_plan_card
             .action_plan_card_inner
               .row
                 .col-4
@@ -11,16 +11,17 @@
                     .col-12
                       - if action_plan.book_image.present?
                         = image_tag action_plan.book_image
-                              
+                                
                 .col-8
-                  .action_plan_card_text
-                    = action_plan.action_content
+                  = link_to action_plan_path(action_plan)
+                    .action_plan_card_text
+                      = action_plan.action_content
                   .action_plan_card_notion
                       - if action_plan.notion
                         = "メール通知設定 オン" 
                       - else 
                         = "メール通知設定 オフ"      
-- else 
-  | アクションプランはまだ登録されていません  
+  - else 
+    | アクションプランはまだ登録されていません  
 
 

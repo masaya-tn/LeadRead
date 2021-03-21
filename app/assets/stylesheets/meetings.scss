@@ -13,3 +13,65 @@
     margin-top: 22px;
   }
 }
+
+.meetings-wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.meetings-card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: large;
+}
+
+.meetings-body {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.meetings-container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:500px) {
+  .meetings-container {
+    width: 100%;
+  }
+}
+
+.meeting-header {
+  padding-top: 20px;
+  color: black;
+}
+
+.meeting-content {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.meetings-info {
+  color: rgb(141, 141, 141);
+}
+
+.meeting-info {
+  margin-bottom: 5px;
+}
+
+.meeting-date {
+  margin-left: 250px;
+  color: rgb(143, 143, 143);
+}
+
+.messages {
+  color: rgb(95, 95, 95);
+  font-size: small;
+  border-top: 1px solid rgb(223, 223, 223);
+}

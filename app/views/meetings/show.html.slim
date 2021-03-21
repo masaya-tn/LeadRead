@@ -1,36 +1,44 @@
-.card
-  = link_to user_path(@meeting.user)
-    - if @meeting.user.avatar.present?
-      = image_tag @meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
-    = @meeting.user.username
-  = "参加人数: #{@meeting.participanting_users.count}人/#{@meeting.capacity}人"
-  = @meeting.title
-  = @meeting.description
-
-  - if current_user&.own?(@meeting)
-    = "参加申請一覧"
-    - @meeting.requesting_users.each do |requesting_user|
-      = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
-    = '参加者一覧'
-    = render 'new_participant', user: nil
-    = render 'reject_user', user: nil
-    - @meeting.participanting_users.each do |permited_user|
-      = permited_user.username
-  
-    = link_to edit_meeting_path(@meeting), class: 'edit-button' do
-      = icon 'far', 'edit', class: 'fa-lg'
-    = link_to meeting_path(@meeting), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
-      = icon 'far', 'trash-alt', class: 'fa-lg'
-  - elsif current_user
-    = render 'request_area', meeting: @meeting
-
-  - if current_user&.own?(@meeting) || current_user&.participant?(@meeting)
-    = render 'messages/messages', messages: @messages
-    hr.m-0
-    .post-message.p-3
-      = render 'messages/form', meeting: @meeting, message: @message
-  = @meeting.date.to_s(:datetime)
+.card.meetings-container
+  .meetings-wrapper
+    .row.meeting-header
+      .col-4
+        = link_to user_path(@meeting.user)
+          - if @meeting.user.avatar.present?
+            = image_tag @meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+          = @meeting.user.username
+      .col-8
+        .card-title = @meeting.title
+    .meeting-content = @meeting.description
+    .meeting-info = "参加人数: #{@meeting.participanting_users.count}人/#{@meeting.capacity}人"
+    .meeting-info 
+      = '参加者一覧: '
+      = render 'new_participant', user: nil
+      = render 'reject_user', user: nil
+      - @meeting.participanting_users.each do |permited_user|
+        = link_to user_path(permited_user)
+          = "#{permited_user.username} "
     
+    - if current_user&.own?(@meeting)
+      .meeting-info = "参加申請一覧:"
+      - @meeting.requesting_users.each do |requesting_user|
+        = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
+      
+      = link_to edit_meeting_path(@meeting), class: 'edit-button' do
+        = icon 'far', 'edit', class: 'fa-lg'
+      = link_to meeting_path(@meeting), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
+        = icon 'far', 'trash-alt', class: 'fa-lg'
+    - elsif current_user
+      = render 'request_area', meeting: @meeting
+    
+    - if current_user&.own?(@meeting) || current_user&.participant?(@meeting)
+      .messages
+        = 'メッセージ'
+        = render 'messages/messages', messages: @messages
+      hr.m-0
+      .post-message.p-3
+        = render 'messages/form', meeting: @meeting, message: @message
+    = @meeting.date.to_s(:datetime)
+      
 
 
 

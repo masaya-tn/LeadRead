@@ -1,9 +1,16 @@
-= @action_plan.book_title
-- if @action_plan.book_image.present?
-  = image_tag @action_plan.book_image
-= @action_plan.action_content
+.action-plans-container
+  .row 
+    .col-4.book_detail
+      - if @action_plan.book_image.present?
+        = image_tag @action_plan.book_image
+    .col-8.book_detail
+      .col-12 
+        h3 = @action_plan.book_title
+  
+  .output_content
+    = @action_plan.action_content
 
-= link_to edit_action_plan_path(@action_plan) do
-  = icon 'far', 'edit', class: 'fa-lg'
-= link_to action_plan_path(@action_plan), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do 
-  = icon 'far', 'trash-alt', class: 'fa-lg'
+  = link_to edit_action_plan_path(@action_plan) do
+    = icon 'far', 'edit'
+  = link_to action_plan_path(@action_plan), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do 
+    = icon 'far', 'trash-alt'

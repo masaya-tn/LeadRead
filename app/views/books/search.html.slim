@@ -21,7 +21,7 @@
                 - else
                   .small_title = book.title
             .dropdown-menu[aria-labelledby="dropdownMenuLink"]
-              - @book_title = book.title[0.10]
+              - @book_title = book.title
               - @author = book.authors 
               - @book_image = book.image
               = link_to 'アウトプット', new_output_path(:book_title => @book_title, :author => @author, :book_image => @book_image), class: 'dropdown-item'

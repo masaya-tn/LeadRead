@@ -10,6 +10,6 @@ div id="message-#{message.id}"
     .col-sm-4
       - if current_user&.own?(message)
         = link_to message_path(message), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
-          = icon 'far', 'trash-alt', class: 'fa-sm'
+          = icon 'far', 'trash-alt', class: 'fa-sm delete-message-button'
         = link_to edit_message_path(message), remote: true do 
-          = icon 'far', 'edit', class: 'fa-sm'
+          = icon 'far', 'edit', class: 'fa-sm edit-message-button'

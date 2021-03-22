@@ -13,7 +13,7 @@ FactoryBot.define do
     title { 'タイトル' }
     description { 'aaaaaaaaaaaaaaaaaaaaa' }
     capacity { 4 }
-    date { Date.today.to_time }
+    date { Date.tomorrow.to_time }
     user
   end
 end

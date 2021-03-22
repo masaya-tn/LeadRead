@@ -7,6 +7,8 @@
             .users
               - if following.avatar.present?
                 = image_tag following.avatar.url, size: '20x20', class: 'rounded-circle mr-1'
+              - else 
+                i.fas.fa-user.no-image
               = following.username
       - else
         .fontsize-sm = "フォローしているユーザーはいません"
@@ -18,6 +20,8 @@
             .users
               - if follower.avatar.present?
                 = image_tag follower.avatar.url, size: '20x20', class: 'rounded-circle mr-1'
+              - else 
+                i.fas.fa-user
               = follower.username
       - else
         .fontsize-sm = "フォロワーはいません"

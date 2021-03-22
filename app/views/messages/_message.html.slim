@@ -3,6 +3,8 @@ div id="message-#{message.id}"
     .col-sm-8
       - if message.user.avatar.present?
         = image_tag message.user.avatar.url, size: '30x30', class: 'rounded-circle mr-1' 
+      - else 
+        i.fas.fa-user
       = message.user.username 
       = message.body
     .col-sm-4

@@ -1,11 +1,17 @@
-= link_to notification_read_path(notification), class: "dropdown-item border-bottom #{'read' if notification.read?}", method: :post do
-  - if notification.notifiable.user.avatar.present?
-    = image_tag notification.notifiable.user.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
-  object
-    = link_to notification.notifiable.user.username, user_path(notification.notifiable.user)
-  | があなたの読書会に
-  object 
-    = link_to 'メッセージ', message_path(notification.notifiable.meeting, anchor: "message-#{notification.notifiable.id}")
-  | を送信しました
-  .text-right 
-    = l notification.created_at, format: :short
+- if current_user.id != notification.notifiable.user.id
+  .dropdown-item.border-bottom
+    - if notification.notifiable.user.avatar.present?
+      = image_tag notification.notifiable.user.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
+    - else 
+      i.fas.fa-user
+    object
+      = link_to notification.notifiable.user.username, user_path(notification.notifiable.user)
+    | があなたの
+    object 
+      = link_to '読書会', meeting_path(notification.notifiable.meeting)
+    | にメッセージを送信しました
+    .ml-auto
+      = l notification.created_at, format: :short
+      object
+        = link_to '既読', notification_read_path(notification), class: "#{'read' if notification.read?}", method: :post 
+        

@@ -12,6 +12,8 @@
                 .col-4
                   - if meeting.user.avatar.present?
                     = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+                  - else 
+                    i.fas.fa-user
                   = meeting.user.username
                 .col-8
                   = link_to meeting_path(meeting)

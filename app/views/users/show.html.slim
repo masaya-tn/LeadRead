@@ -3,6 +3,8 @@
     .col-3
       - if @user.avatar.present?
         = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-1'
+      - else 
+        i.fas.fa-user.no-image
     .col-9
       .row 
         .col-6.mypage-name
@@ -15,7 +17,7 @@
                 = render 'shared/unread_badge'
                 = ' 通知'
               #header-notifications.dropdown-menu.dropdown-menu-right.m-0.p-0 aria-labelledby="dropdownMenuButton"
-                = render 'shared/header_notifications'
+                = render 'shared/notifications'
           - elsif current_user 
             = render 'follow_area', user: @user
       p

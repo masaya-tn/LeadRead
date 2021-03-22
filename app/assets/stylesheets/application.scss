@@ -23,6 +23,10 @@
 //   }
 // }
 
+.fontsize-sm {
+  font-size: small;
+}
+
 .book-card:hover {
   opacity: 0.5;
   color: white;
@@ -34,14 +38,15 @@
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
  */
 
- body {
+body {
   font-size: 20px;
   color: #212529;
   font-family: 'Lora', 'Times New Roman', serif;
 }
 
 main {
-  padding-top: 70px;
+  padding-top: 100px;
+  padding-bottom: 30px;
 }
 
 p {
@@ -419,8 +424,8 @@ footer .copyright {
 }
 
 .btn {
-  font-size: 14px;
-  font-weight: 800;
+  font-size: small;
+  font-weight: normal;
   padding: 15px 25px;
   letter-spacing: 1px;
   text-transform: uppercase;

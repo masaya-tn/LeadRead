@@ -4,14 +4,24 @@
       - if user.followings.present?
         - user.followings.each do |following|
           = link_to user_path(following)
-            = following.username
+            .users
+              - if following.avatar.present?
+                = image_tag following.avatar.url, size: '20x20', class: 'rounded-circle mr-1'
+              - else 
+                i.fas.fa-user.no-image
+              = following.username
       - else
-        = "フォローしているユーザーはいません"
+        .fontsize-sm = "フォローしているユーザーはいません"
   .col 
     #multiCollapseFollower.collapse.multi-collapse
       - if user.followers.present?
         - user.followers.each do |follower|
           = link_to user_path(follower)
-            = follower.username
+            .users
+              - if follower.avatar.present?
+                = image_tag follower.avatar.url, size: '20x20', class: 'rounded-circle mr-1'
+              - else 
+                i.fas.fa-user
+              = follower.username
       - else
-        = "フォロワーはいません"
+        .fontsize-sm = "フォロワーはいません"

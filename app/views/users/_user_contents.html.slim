@@ -12,19 +12,20 @@
                 - if output.book_image.present?
                   = image_tag output.book_image
                 = output.title
-  .card
-    #headingTwo.card-header
-      h5.mb-0
-        button.btn.btn-link.collapsed[type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"]
-          |  アクションプラン
-    #collapseTwo.collapse[aria-labelledby="headingTwo" data-parent="#accordionMypage"]
-      .card-body
-        - @user.action_plans.each do |action_plan|
-            .card
-              = link_to action_plan_path(action_plan)
-                - if action_plan.book_image.present?
-                  = image_tag action_plan.book_image
-                = action_plan.action_content
+  - if current_user.id == @user.id
+    .card
+      #headingTwo.card-header
+        h5.mb-0
+          button.btn.btn-link.collapsed[type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"]
+            |  アクションプラン
+      #collapseTwo.collapse[aria-labelledby="headingTwo" data-parent="#accordionMypage"]
+        .card-body
+          - @user.action_plans.each do |action_plan|
+              .card
+                = link_to action_plan_path(action_plan)
+                  - if action_plan.book_image.present?
+                    = image_tag action_plan.book_image
+                  = action_plan.action_content
   .card
     #headingThree.card-header
       h5.mb-0

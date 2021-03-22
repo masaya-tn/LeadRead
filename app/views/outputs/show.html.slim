@@ -19,6 +19,8 @@
       = link_to user_path(@output.user)
         - if @output.user.avatar.present?
           = image_tag @output.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+        - else 
+          i.fas.fa-user
         = @output.user.username  
   .output_content
     = @output.body

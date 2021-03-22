@@ -1,8 +1,12 @@
-= link_to notification_read_path(notification), class: "dropdown-item border-bottom #{'read' if notification.read?}", method: :post do
+.dropdown-item.border-bottom
   - if notification.notifiable.user.avatar.present?
     = image_tag notification.notifiable.user.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
+  - else 
+    i.fas.fa-user
   object
     = link_to notification.notifiable.user.username, user_path(notification.notifiable.user)
   | があなたの申請を許可しました
-  .text-right 
+  .ml-auto
     = l notification.created_at, format: :short
+    object
+      = link_to '既読', notification_read_path(notification), class: "#{'read' if notification.read?}", method: :post 

@@ -15,7 +15,7 @@ class ActionPlansController < ApplicationController
       redirect_to action_plans_path, success: '登録しました'
     else
       flash.now[:danger] = '登録に失敗しました'
-      render :new
+      redirect_to new_action_plan_path(:book_title => @action.book_title, :book_image => @action.book_image), danger: 'アクションプランを入力してください'
     end
   end
 
@@ -33,7 +33,7 @@ class ActionPlansController < ApplicationController
       redirect_to action_plans_path, success: '更新しました'
     else
       flash.now[:danger] = '投稿の更新に失敗しました'
-      rend
+      render :edit
     end
   end
 

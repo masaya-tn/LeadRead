@@ -40,25 +40,25 @@ RSpec.describe Meeting, type: :model do
     it 'タイトルが必須であること' do
       meeting = build(:meeting, title: nil)
       meeting.valid?
-      expect(meeting.errors[:title]).to include('を入力してください')
+      expect(meeting.errors[:title]).to include('が入力されていません。')
     end
 
     it '説明が必須であること' do
       meeting = build(:meeting, description: nil)
       meeting.valid?
-      expect(meeting.errors[:description]).to include('を入力してください')
+      expect(meeting.errors[:description]).to include('が入力されていません。')
     end
 
     it '定員が必須であること' do
       meeting = build(:meeting, capacity: nil)
       meeting.valid?
-      expect(meeting.errors[:capacity]).to include('を入力してください')
+      expect(meeting.errors[:capacity]).to include('が入力されていません。')
     end
 
     it '日付が必須であること' do
       meeting = build(:meeting, date: nil)
       meeting.valid?
-      expect(meeting.errors[:date]).to include('を入力してください')
+      expect(meeting.errors[:date]).to include('が入力されていません。')
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe Meeting, type: :model do
       it '過去の日付は無効である' do
         meeting = build(:meeting, date: Date.today - 1)
         meeting.valid?
-        expect(meeting.errors[:date]).to include('過去の日付は登録できません')
+        expect(meeting.errors[:date]).to include('に過去の日付は登録できません')
       end
     end
 

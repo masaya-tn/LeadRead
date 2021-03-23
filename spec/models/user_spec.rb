@@ -1,41 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :bigint           not null, primary key
-#  avatar                 :string(255)
-#  email                  :string(255)      default(""), not null
-#  encrypted_password     :string(255)      default(""), not null
-#  provider               :string(255)
-#  remember_created_at    :datetime
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string(255)
-#  uid                    :string(255)
-#  username               :string(255)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#
-# Indexes
-#
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#
-# def request?(meeting)
-#   requestings.exists?(meeting_id: meeting.id)
-# end
-
-# def request(meeting)
-#   request_meetings << meeting
-# end
-
-# def unrequest(meeting)
-#   request_meetings.destroy(meeting)
-# end
-
-# def participant?(meeting)
-#   participants.exists?(meeting_id: meeting.id)
-# end
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -48,20 +10,20 @@ RSpec.describe User, type: :model do
     it 'メールが無い場合無効' do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include('を入力してください')
+      expect(user.errors[:email]).to include('が入力されていません。')
     end
 
     it 'パスワードが無い場合無効' do
       user = build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include('を入力してください')
+      expect(user.errors[:password]).to include('が入力されていません。')
     end
 
     it 'メールアドレスは一意であること' do
       user1 = create(:user)
       user2 = build(:user, email: user1.email)
       user2.valid?
-      expect(user2.errors[:email]).to include('はすでに存在します')
+      expect(user2.errors[:email]).to include('は既に使用されています。')
     end
   end
 

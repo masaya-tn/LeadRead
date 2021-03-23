@@ -10,7 +10,7 @@ RSpec.describe Message, type: :model do
     it '本文が必須であること' do
       message = build(:message, body: nil)
       message.valid?
-      expect(message.errors[:body]).to include('を入力してください')
+      expect(message.errors[:body]).to include('が入力されていません。')
     end
   end
 end

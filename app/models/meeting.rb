@@ -35,7 +35,7 @@ class Meeting < ApplicationRecord
   validates :date, presence: true
   validate :before_today
   def before_today
-    errors.add(:date, '過去の日付は登録できません') if !date == (nil) && (date < Date.today.to_time)
+    errors.add(:date, 'に過去の日付は登録できません') if date.present? && (date < Date.today.to_time)
   end
 
   def permit?(user)

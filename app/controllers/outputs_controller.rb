@@ -27,8 +27,7 @@ class OutputsController < ApplicationController
     if @output.save
       redirect_to outputs_path, success: '投稿しました'
     else
-      flash.now[:danger] = '投稿に失敗しました'
-      render :new
+      redirect_to new_output_path(:book_title => @output.book_title, :author => @output.author, :book_image => @output.book_image), danger: '未入力の項目があります'
     end
   end
 

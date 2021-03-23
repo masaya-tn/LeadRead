@@ -16,7 +16,7 @@ html
       = render 'shared/before_login_header'
     
     main
-      = render 'shared/flash_messages'
       .application-container
+        = render 'shared/flash_messages'
         = yield
       = render 'shared/modal'

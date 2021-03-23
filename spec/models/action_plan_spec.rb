@@ -16,14 +16,10 @@ RSpec.describe ActionPlan, type: :model do
       expect(action_plan).to be_valid
     end
 
-    # meeting = build(:meeting, title: nil)
-    #   meeting.valid?
-    #   expect(meeting.errors[:title]).to include('を入力してください')
-
     it '本文が必須であること' do
       action_plan = build(:action_plan, action_content: nil)
       action_plan.valid?
-      expect(action_plan.errors[:action_content]).to include('を入力してください')
+      expect(action_plan.errors[:action_content]).to include('が入力されていません。')
     end
   end
 end

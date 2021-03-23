@@ -10,7 +10,7 @@ require 'date'
 
 FactoryBot.define do
   factory :meeting do
-    title { 'タイトル' }
+    title { Faker::Book.title }
     description { 'aaaaaaaaaaaaaaaaaaaaa' }
     capacity { 4 }
     date { Date.tomorrow.to_time }

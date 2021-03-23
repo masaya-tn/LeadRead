@@ -13,7 +13,7 @@
           - if current_user.id == @user.id
             = link_to 'プロフィール編集', edit_profile_path(@user.id)
             .dropdown.notification-icon 
-              a#dropdownMenuButton.nav-link.position-relative href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
+              a#dropdownMenuButton.nav-link.position-relative.notification-button href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
                 = render 'shared/unread_badge'
                 = ' 通知'
               #header-notifications.dropdown-menu.dropdown-menu-right.m-0.p-0 aria-labelledby="dropdownMenuButton"

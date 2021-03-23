@@ -21,13 +21,13 @@ RSpec.describe Output, type: :model do
     it 'タイトルが必須であること' do
       output = build(:output, title: nil)
       output.valid?
-      expect(output.errors[:title]).to include('を入力してください')
+      expect(output.errors[:title]).to include('が入力されていません。')
     end
 
     it '本文が必須であること' do
       output = build(:output, body: nil)
       output.valid?
-      expect(output.errors[:body]).to include('を入力してください')
+      expect(output.errors[:body]).to include('が入力されていません。')
     end
   end
 end

@@ -1,3 +1,7 @@
 - if user
+  - if user.avatar.present?
+    = image_tag user.avatar.url, size: '20x20', class: 'rounded-circle mr-1' 
+  - else 
+    i.fas.fa-user
   = user.username
-  = "許可しました"
+  = "の参加を許可しました"

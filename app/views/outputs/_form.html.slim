@@ -1,3 +1,4 @@
+= render 'shared/error_messages', object: output
 .card.mb-3
   .row.no-gutters 
     .col-md-4 
@@ -8,9 +9,15 @@
         .card-title = "タイトル: #{@book_title}"
         .card-text
           = "著者:"
-          - if authors.present?
+          - if authors&.instance_of?(Array)
             - authors.each do |author|
               = author
+          - elsif authors.present?
+            - authors_array = authors.split(' ')
+            - authors_array.each do |author|
+              = author
+              
+
 = form_with model: output, local: true, id: 'output_form' do |f|
   .form-group
     = f.text_field :title, class: 'form-control', placeholder: 'タイトル', id: 'title_form'

@@ -1,11 +1,7 @@
-.dropdown-item.border-bottom
-  - if notification.notifiable.user.avatar.present?
-    = image_tag notification.notifiable.user.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
-  - else 
-    i.fas.fa-user
+.dropdown-item.border-bottom.permit-notification
   object
-    = link_to notification.notifiable.user.username, user_path(notification.notifiable.user)
-  | があなたの申請を許可しました
+    = link_to '読書会', meeting_path(notification.notifiable.meeting)
+  | への参加を許可されました
   .ml-auto
     = l notification.created_at, format: :short
     object

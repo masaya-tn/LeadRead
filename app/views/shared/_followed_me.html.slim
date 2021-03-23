@@ -1,4 +1,4 @@
-.dropdown-item.border-bottom
+.dropdown-item.border-bottom.follow-notification
   - if notification.notifiable.follower.avatar.present?
     = image_tag notification.notifiable.follower.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
   - else 

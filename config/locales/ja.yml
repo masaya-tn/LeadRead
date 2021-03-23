@@ -17,22 +17,28 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      post: '投稿'
-      comment: 'コメント'
+      output: 'アウトプット'
+      action_plan: 'アクションプラン'
+      meeting: '読書会'
+      message: 'メッセージ'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         username: 'ユーザー名'
-        avatar: 'アバター'
-        notification_on_comment: 'コメント時の通知メール'
-        notification_on_like: 'いいね時の通知メール'
-        notification_on_follow: 'フォロー時の通知メール'
-      post:
-        images: '画像'
+        avatar: 'プロフィール画像'
+        
+      output:
+        title: 'タイトル'
         body: '本文'
-      comment:
-        body: 'コメント'
-        user_id: 'ユーザー'
-        post_id: '投稿'
+      action_plan:
+        action_content: 'アクションプラン'
+      meeting:
+        title: 'タイトル'
+        description: '詳細'
+        capacity: '定員'
+        date: '開催日程'
+      message:
+        body: 'メッセージ'
+        

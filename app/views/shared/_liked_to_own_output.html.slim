@@ -1,5 +1,5 @@
 - if current_user.id != notification.notifiable.user.id
-  .dropdown-item.border-bottom
+  .dropdown-item.border-bottom.like-notification
     - if notification.notifiable.user.avatar.present?
       = image_tag notification.notifiable.user.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
     - else 

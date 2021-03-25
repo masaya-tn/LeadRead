@@ -1,16 +1,65 @@
 .action-plans-container
-  .row 
-    .col-4.book_detail
-      - if @action_plan.book_image.present?
-        = image_tag @action_plan.book_image
-    .col-8.book_detail
-      .col-12 
-        h3 = @action_plan.book_title
-  
-  .output_content
-    = @action_plan.action_content
+  .card
+    .action-plan-card-container
+      .row.book-detail
+        .col-4
+          - if @action_plan.book_image.present?
+            = image_tag @action_plan.book_image
+        .col-8
+          h4.book-title = @action_plan.book_title
+      
+      .output_content
+        = @action_plan.action_content
+        .action_plan_card_notice
+          - if @action_plan.notice
+            = "メール通知設定 オン" 
+          - else 
+            = "メール通知設定 オフ"    
 
-  = link_to edit_action_plan_path(@action_plan) do
-    = icon 'far', 'edit'
-  = link_to action_plan_path(@action_plan), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do 
-    = icon 'far', 'trash-alt'
+        
+
+      .action-plan-buttons
+        = link_to edit_action_plan_path(@action_plan) do
+          = icon 'far', 'edit'
+        = link_to action_plan_path(@action_plan), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do 
+          = icon 'far', 'trash-alt'
+      
+
+/ .outputs-container
+/   .card
+/     .output-card-container
+/       .row.book-detail
+/         .col-md-4
+/           - if @output.book_image.present?  
+/             = image_tag @output.book_image, size: '150x220'
+/         .col-md-8
+/           h3 = "#{@output.book_title}"
+/           = "著者:"
+/           - if @output.author.instance_of?(Array)
+/             - @output.author.each do |author|
+/               = author
+/           - else 
+/             = @output.author
+      
+/       .output_content
+/         = @output.body
+
+/       .row.output-footer
+/         .col-6.output-user
+/           = link_to user_path(@output.user)
+/             - if @output.user.avatar.present?
+/               = image_tag @output.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+/             - else 
+/               i.fas.fa-user
+/             = @output.user.username  
+/         .col-6
+/           .output-buttons
+/             - if current_user&.own?(@output)
+/               = link_to edit_output_path(@output), class: 'edit-button' do
+/                 = icon 'far', 'edit'
+/               = link_to output_path(@output), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
+/                 = icon 'far', 'trash-alt'
+                
+/             = @output.likes.count
+/             = render 'like_area', output: @output 
+            

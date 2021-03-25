@@ -12,8 +12,8 @@
   .form-group.row 
     label
       = "メール通知を受ける"
-    = f.check_box :notion, id: 'mail_check_box'
-    .notion_caution
+    = f.check_box :notice, id: 'mail_check_box'
+    .notice_caution
       = "メール通知をオンにすると毎週日曜日にアクションプランの確認メールが届きます"
   .form-group
     = f.text_area :action_content, class: 'form-control', placeholder: 'アクションプラン', id: 'content_form'

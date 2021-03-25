@@ -11,23 +11,42 @@
   text-align: center;
 }
 
-.action_plan_card_notion {
+.action_plan_card_notice {
   font-size: small;
   margin-top: 30px;
+  color: rgb(144, 219, 30);
 }
 
-.notion_caution {
+.notice_caution {
   font-size: small;
   color: rgba(78, 206, 95, 0.897);
 }
 
 .action-plans-container {
   width: 600px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 
 @media screen and (max-width:600px) {
   .action-plans-container {
     width: 100%;
+    margin-top: 80px;
   }
+}
+
+.action-plan-card-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.book-title {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-plan-buttons {
+  text-align: right;
+  margin-bottom: 30px;
 }

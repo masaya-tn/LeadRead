@@ -46,6 +46,6 @@ class ActionPlansController < ApplicationController
   private
 
   def action_plan_params
-    params.require(:action_plan).permit(:notion, :action_content, :book_title, :book_image)
+    params.require(:action_plan).permit(:notice, :action_content, :book_title, :book_image)
   end
 end

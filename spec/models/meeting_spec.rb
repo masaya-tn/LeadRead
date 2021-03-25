@@ -1,3 +1,7 @@
+# == Schema Information
+#
+# Table name: meetings
+#
 #  id          :bigint           not null, primary key
 #  capacity    :integer          not null
 #  date        :datetime         not null
@@ -7,26 +11,15 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :bigint
-
-# validate :before_today
-#     def before_today
-#       unless date == nil
-#         errors.add(:date, '過去の日付は登録できません') if date < Date.today.to_time
-#       end
-#     end
-
-#   def permit?(user)
-#     participants.exists?(user_id: user.id)
-#   end
-
-#   def permit(user)
-#     participanting_users << user
-#   end
-
-#   def after_now?
-#     date > Date.today.to_time
-#   end
-
+#
+# Indexes
+#
+#  index_meetings_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 require 'rails_helper'
 require 'date'
 

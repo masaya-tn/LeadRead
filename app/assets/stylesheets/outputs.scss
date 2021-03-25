@@ -7,10 +7,14 @@
 .output_content {
   width: 70%;
   margin: 0 auto;
+  padding-bottom: 30px;
+  font-weight: bold;
 }
 
-.book_detail {
-  border-bottom: 1px solid rgb(0, 195, 255);
+.book-detail {
+  margin: 30px auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(211, 211, 211);
 }
 
 .outputs-border {
@@ -32,12 +36,13 @@
 
 .outputs-container {
   width: 600px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 
 @media screen and (max-width:600px) {
   .outputs-container {
     width: 100%;
+    margin-top: 80px;
   }
 
   .outputs-search-form {
@@ -52,3 +57,27 @@
 .heart-red {
   color: red;
 }
+
+.output-card-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:600px) {
+  .output-card-container {
+    width: 100%;
+  }
+}
+
+.output-buttons {
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.output-footer {
+  width: 90%;
+}
+
+// .output-user {
+//   text-align: center;
+// }

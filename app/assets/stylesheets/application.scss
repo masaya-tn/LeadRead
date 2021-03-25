@@ -6,11 +6,16 @@
 @import 'action_plan';
 @import 'mypage';
 @import 'meetings';
+@import 'login';
 
 
 // .application-container {
 //   background-color: rgb(233, 233, 233);
 // }
+
+.toppage-container {
+  margin-top: 69px;
+}
 
 .fontsize-sm {
   font-size: small;
@@ -19,6 +24,10 @@
 .book-card:hover {
   opacity: 0.5;
   color: white;
+}
+
+.fa-twitter {
+  color: #00d5ff;
 }
 
 /*!
@@ -34,7 +43,6 @@ body {
 }
 
 main {
-  padding-top: 100px;
   padding-bottom: 30px;
 }
 

@@ -1,0 +1,23 @@
+.user-container {
+  margin: 100px auto;
+  width: 400px;
+  text-align: center;
+}
+
+@media screen and (max-width:600px) {
+  .user-container {
+    width: 100%;
+    margin-top: 80px;
+  }
+}
+
+.login {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.login-form {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}

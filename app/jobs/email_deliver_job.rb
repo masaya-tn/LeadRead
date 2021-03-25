@@ -3,7 +3,7 @@ class EmailDeliverJob < ApplicationJob
 
   def perform
     users = []
-    action_plans = ActionPlan.where(notion: true)
+    action_plans = ActionPlan.where(notice: true)
     action_plans.each do |action_plan|
       users << action_plan.user
     end

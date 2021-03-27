@@ -11,7 +11,7 @@
       .col-8
         .card-title = @meeting.title
     .meeting-content = @meeting.description
-    .meeting-info = "参加人数: #{@meeting.participanting_users.count}人/#{@meeting.capacity}人"
+    .meeting-info = "参加人数: #{@meeting.participanting_users.size}人/#{@meeting.capacity}人"
     .meeting-info 
       = '参加者一覧: '
       = render 'new_participant', user: nil

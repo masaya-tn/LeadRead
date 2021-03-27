@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   def index
-    @meetings = Meeting.all.page(params[:page]).per(10).order(created_at: :desc)
+    @meetings = Meeting.all.includes(:participanting_users, :user).page(params[:page]).per(10).order(created_at: :desc)
     @q = Meeting.ransack(params[:q])
   end
 

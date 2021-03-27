@@ -2,7 +2,7 @@ class OutputsController < ApplicationController
   before_action :require_current_user
 
   def index
-    @outputs = Output.all.includes(:user).page(params[:page]).per(20).order(created_at: :desc)
+    @outputs = Output.all.includes(:likes).page(params[:page]).per(20).order(created_at: :desc)
     @q = Output.ransack(params[:q])
   end
 

@@ -5,4 +5,4 @@
   .ml-auto
     = l notification.created_at, format: :short
     object
-      = link_to '既読', notification_read_path(notification), class: "#{'read' if notification.read?}", method: :post 
+      = link_to ' ✖️', notification_read_path(notification), class: "#{'read' if notification.read?}", method: :post 

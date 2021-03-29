@@ -47,8 +47,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :notifications, dependent: :destroy
 
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, format: {with: VALID_PASSWORD_REGEX}
+  # VALID_PASSWORD_REGEX = /^[0-9a-zA-Z]*$/
+  # validates :password, format: {with: VALID_PASSWORD_REGEX}
 
   def self.find_or_create_from_oauth(auth)
     User.find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
@@ -105,5 +105,12 @@ class User < ApplicationRecord
 
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.username = 'ゲストさん'
+    end
   end
 end

@@ -4,23 +4,22 @@
   = render 'search_form'
   .row
     - @meetings.each do |meeting|
-      - if meeting.after_now?
-        .col-md-12
-          .card.meetings-card
-            .card-body 
-              .row
-                .col-4
-                  - if meeting.user.avatar.present?
-                    = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
-                  - else 
-                    i.fas.fa-user
-                  = meeting.user.username
-                .col-8
-                  = link_to meeting_path(meeting)
-                    .card-title = meeting.title
-                .meetings-body = meeting.description[0,100]
-                .meetings-info = "参加人数: #{meeting.participanting_users.count}人/#{meeting.capacity}人"
-                .meeting-date = meeting.date.to_s(:datetime)
+      .col-md-12
+        .card.meetings-card
+          .card-body 
+            .row
+              .col-4
+                - if meeting.user.avatar.present?
+                  = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+                - else 
+                  i.fas.fa-user
+                = meeting.user.username
+              .col-8
+                = link_to meeting_path(meeting)
+                  .card-title = meeting.title
+              .meetings-body = meeting.description[0,100]
+              .meetings-info = "参加人数: #{meeting.participanting_users.size}人/#{meeting.capacity}人"
+              .meeting-date = meeting.date.to_s(:datetime)
   = paginate @meetings
 
 = link_to new_meeting_path do

@@ -26,9 +26,12 @@ html[lang="ja"]
     .container
       .row
         .col-lg-8.col-md-10.mx-auto
+          = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post
           .post-preview
             a[href="post.html"]
 
+            
+            
             h2.post-title
               |  Man must explore, and this is exploration at its greatest 
             h3.post-subtitle

@@ -21,9 +21,9 @@
           - elsif current_user 
             = render 'follow_area', user: @user
       p
-        = @user.followings.count
+        = @user.followings.size
         a.btn.mypage-btn aria-controls="multiCollapseFollow" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollow" role="button" フォロー
-        = @user.followers.count
+        = @user.followers.size
         a.btn.mypage-btn aria-controls="multiCollapseFollower" aria-expanded="false" data-toggle="collapse" href="#multiCollapseFollower" role="button" フォロワー
 
   = render 'user_follow', user: @user

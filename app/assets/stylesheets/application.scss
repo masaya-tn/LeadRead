@@ -185,7 +185,7 @@ img::-moz-selection {
     position: fixed;
     top: -67px;
     transition: transform 0.2s;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0.9);
   }
   #mainNav.is-fixed .navbar-brand {
@@ -447,7 +447,7 @@ footer .copyright {
   padding: 25px 35px;
 }
 
-.card {
-  
+.flash-message {
+  margin-top: 69px;
+  margin-bottom: 0px;
 }
-

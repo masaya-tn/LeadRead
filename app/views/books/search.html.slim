@@ -1,25 +1,25 @@
 .outputs-container
-  = form_with model: @search_form, url: search_books_path, local:true, scope: :q, method: :get do |f|
-    .row
-      .col-1
-      .col
-        = f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワード'
-      .col
-        / = f.submit 'search', class: 'btn btn-info btn-raised rounded'
-        = button_tag type: 'submit', class: 'btn btn-info btn-raised rounded'
-          i.fas.fa-search
+  .search-form
+    = form_with model: @search_form, url: search_books_path, local:true, scope: :q, method: :get do |f|
+      .row
+        .col-1
+        .col
+          = f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワード'
+        .col
+          / = f.submit 'search', class: 'btn btn-info btn-raised rounded'
+          = button_tag type: 'submit', class: 'btn btn-info btn-raised rounded'
+            i.fas.fa-search
 
   .container
     .row
       - @books.each do |book|
-        .col-md-3.col-xs-12
+        .col-12
           .dropdown
             .dropdown-toggle[id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
               .col-12
                 - if book.image.present?
-                  = image_tag book.image, size: "100x140", class: "book-card"
-                - else
-                  .small_title = book.title
+                  = image_tag book.image, size: "140x200", class: "book-card"
+                .small_title = book.title
             .dropdown-menu[aria-labelledby="dropdownMenuLink"]
               - @book_title = book.title
               - @author = book.authors 

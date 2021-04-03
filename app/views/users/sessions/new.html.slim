@@ -1,12 +1,12 @@
 .user-container
   .card
-    h1.login.card-title
+    h2.login.card-title
       | ログイン
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
         = f.email_field :email, class: 'form-control login-form', placeholder: 'メールアドレス'
       .form-group
         = f.password_field :password, class: 'form-control login-form', placeholder: 'パスワード'
-      = f.submit "ログイン", class: 'btn btn-info btn-raised rounded'
+      = f.submit "ログイン", class: 'btn btn-info btn-raised rounded login-btn'
     = render "users/shared/links"
 

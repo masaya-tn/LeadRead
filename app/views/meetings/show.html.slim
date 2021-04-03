@@ -27,9 +27,9 @@
           = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
         
         = link_to edit_meeting_path(@meeting), class: 'edit-button' do
-          = icon 'far', 'edit', class: 'fa-lg'
+          = icon 'far', 'edit'
         = link_to meeting_path(@meeting), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
-          = icon 'far', 'trash-alt', class: 'fa-lg'
+          = icon 'far', 'trash-alt'
       - elsif current_user
         = render 'request_area', meeting: @meeting
     
@@ -40,6 +40,10 @@
       hr.m-0
       .post-message.p-3
         = render 'messages/form', meeting: @meeting, message: @message
+
+      .twitter-share-link
+        = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
+          i.fab.fa-twitter = "Twitterでシェア"
     = @meeting.date.to_s(:datetime)
       
 

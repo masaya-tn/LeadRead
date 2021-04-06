@@ -1,6 +1,6 @@
 .user-container
   .card
-    h1.login.card-title
+    h2.login.card-title
       | ユーザー登録
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "users/shared/error_messages", resource: resource
@@ -10,6 +10,6 @@
         = f.password_field :password, class: 'form-control login-form', placeholder: "パスワード (英数字で6字以上)", autocomplete: "new-password"
       .form-group
         = f.password_field :password_confirmation, class: 'form-control login-form', placeholder: 'パスワード確認', autocomplete: "new-password"
-      = f.submit "ユーザー登録", class: 'btn btn-info btn-raised rounded'
+      = f.submit "ユーザー登録", class: 'btn btn-info btn-raised rounded login-btn'
     = render "users/shared/links"
 

@@ -20,89 +20,37 @@ html[lang="ja"]
           .col-lg-8.col-md-10.mx-auto
             .site-heading
               h1
-                | welcome
-              span.subheading
-                | A Blog Theme by Start Bootstrap
+                | welcome to LeadRead
+              / span.subheading
+              /   | こんちゃす
     .container
       .row
         .col-lg-8.col-md-10.mx-auto
-          = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post
+          .start-btn
+            = link_to new_user_registration_path, class: 'btn btn-info rounded'
+              | LeadReadをはじめる
+          .guest-login
+            = link_to 'ゲストユーザーとしてログイン', users_guest_sign_in_path, class: 'btn btn-outline-warning btn-raised sm rounded', method: :post
           .post-preview
             a[href="post.html"]
-
-            
-            
-            h2.post-title
-              |  Man must explore, and this is exploration at its greatest 
-            h3.post-subtitle
-              |  Problems look mighty small from 150 miles up 
-            p.post-meta
-              | Posted by 
-              a[href="#"]
-                | Start Bootstrap
-              |  on September 24, 2019
-          hr
-          .post-preview
-            a[href="post.html"]
-
-            h2.post-title
-              |  I believe every human has a finite number of heartbeats. I don't intend to waste any of mine. 
-            p.post-meta
-              | Posted by 
-              a[href="#"]
-                | Start Bootstrap
-              |  on September 18, 2019
-          hr
-          .post-preview
-            a[href="post.html"]
-
-            h2.post-title
-              |  Science has not yet mastered prophecy 
-            h3.post-subtitle
-              |  We predict too much for the next year and yet far too little for the next ten. 
-            p.post-meta
-              | Posted by 
-              a[href="#"]
-                | Start Bootstrap
-              |  on August 24, 2019
-          hr
-          .post-preview
-            a[href="post.html"]
-
-            h2.post-title
-              |  Failure is not an option 
-            h3.post-subtitle
-              |  Many say exploration is part of our destiny, but it’s actually our duty to future generations. 
-            p.post-meta
-              | Posted by 
-              a[href="#"]
-                | Start Bootstrap
-              |  on July 8, 2019
-          hr
-          .clearfix
-            a.btn.btn-primary.float-right[href="#"]
-              | Older Posts →
-    hr
+            hr
+            h1.post-title
+              |  LeadReadとは
+            h6.post-subtitle
+              |  せっかく読書したのに内容を忘れてしまった、そんな経験はありませんか？
+            h6.post-subtitle
+              |  LeadReadはそんなあなたの読書をサポートします
+            h6.post-subtitle
+              |  読書で得たことをアウトプットする、アクションプランを作る、また他のユーザーと交流する等様々なアプローチで読書で得た知識を定着させます
+            h6.post-subtitle
+              |  さあ、LeadReadで読書をもっと楽しみましょう
+            hr
     footer
       .container
         .row
           .col-lg-8.col-md-10.mx-auto
             ul.list-inline.text-center
-              li.list-inline-item
-                a[href="#"]
-                  span.fa-stack.fa-lg
-                    i.fas.fa-circle.fa-stack-2x
-                    i.fab.fa-twitter.fa-stack-1x.fa-inverse
-              li.list-inline-item
-                a[href="#"]
-                  span.fa-stack.fa-lg
-                    i.fas.fa-circle.fa-stack-2x
-                    i.fab.fa-facebook-f.fa-stack-1x.fa-inverse
-              li.list-inline-item
-                a[href="#"]
-                  span.fa-stack.fa-lg
-                    i.fas.fa-circle.fa-stack-2x
-                    i.fab.fa-github.fa-stack-1x.fa-inverse
+              
             p.copyright.text-muted
               | Copyright © Your Website 2020
     script[src="vendor/jquery/jquery.min.js"]

@@ -22,9 +22,7 @@
 
 ・Rspec
 
-・AWS
-  ・EC2
-  ・VPC
+・AWS(EC2,VPC)
 
 # 機能一覧
 ・ログイン機能(devise)

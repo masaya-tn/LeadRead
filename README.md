@@ -54,3 +54,7 @@
 ・通知機能
 
 ・メッセージ機能
+
+# ER図
+<img width="811" alt="スクリーンショット 2021-04-07 0 18 21" src="https://user-images.githubusercontent.com/61619091/113735004-ca1f2900-9736-11eb-9f1a-544cc5f614b2.png">
+

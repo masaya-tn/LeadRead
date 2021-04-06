@@ -1,24 +1,4 @@
-# README
+# LeadRead
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+読書で得た知識を定着させ、行動の習慣化をサポートするアプリです。
+https://i.gyazo.com/65882b656b9165a96c0949bccb1eefa7.jpg

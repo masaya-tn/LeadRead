@@ -6,12 +6,15 @@
           | アウトプット
     #collapseOne.collapse[aria-labelledby="headingOne" data-parent="#accordionMypage"]
       .card-body
-        - @user.outputs.each do |output|
-            .card
-              = link_to output_path(output)
-                - if output.book_image.present?
-                  = image_tag output.book_image
-                = output.title
+        - if @user.outputs.empty?
+          = 'まだ投稿はありません'
+        - else
+          - @user.outputs.each do |output|
+              .card
+                = link_to output_path(output)
+                  - if output.book_image.present?
+                    = image_tag output.book_image
+                  = output.title
   - if current_user.id == @user.id
     .card
       #headingTwo.card-header
@@ -20,12 +23,15 @@
             |  アクションプラン
       #collapseTwo.collapse[aria-labelledby="headingTwo" data-parent="#accordionMypage"]
         .card-body
-          - @user.action_plans.each do |action_plan|
-              .card
-                = link_to action_plan_path(action_plan)
-                  - if action_plan.book_image.present?
-                    = image_tag action_plan.book_image
-                  = action_plan.action_content
+          - if @user.action_plans.empty?
+            = 'まだ投稿はありません'
+          - else 
+            - @user.action_plans.each do |action_plan|
+                .card
+                  = link_to action_plan_path(action_plan)
+                    - if action_plan.book_image.present?
+                      = image_tag action_plan.book_image
+                    = action_plan.action_content
   .card
     #headingThree.card-header
       h5.mb-0
@@ -33,7 +39,10 @@
           |  読書会
     #collapseThree.collapse[aria-labelledby="headingThree" data-parent="#accordionMypage"]
       .card-body
-        - @user.meetings.each do |meeting|
-            .card
-              = link_to meeting_path(meeting)
-                = meeting.title
+        - if @user.meetings.empty?
+          = 'まだ投稿はありません'
+        - else
+          - @user.meetings.each do |meeting|
+              .card
+                = link_to meeting_path(meeting)
+                  = meeting.title

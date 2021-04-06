@@ -17,8 +17,11 @@
 
 # 主な使用技術
 ・ruby 2.6.5
+
 ・Rails 5.2.3
+
 ・Rspec
+
 ・AWS
   ・EC2
   ・VPC

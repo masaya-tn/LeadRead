@@ -26,8 +26,6 @@ class Notification < ApplicationRecord
   enum read: { unread: false, read: true }
   scope :recent, ->(count) { order(created_at: :desc).limit(count) }
 
-  include Rails.application.routes.url_helpers
-
   def call_appropriate_partial
     return 'liked_to_own_output' if notifiable_type == 'Like'
     return 'followed_me' if notifiable_type == 'Relationship'

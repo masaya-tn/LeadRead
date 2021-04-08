@@ -1,4 +1,6 @@
 class RequestingsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @meeting = Meeting.find(params[:meeting_id])
     current_user.request(@meeting)

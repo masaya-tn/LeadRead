@@ -9,11 +9,6 @@
 @import 'meetings';
 @import 'login';
 
-
-// .application-container {
-//   background-color: rgb(233, 233, 233);
-// }
-
 .toppage-container {
   margin-top: 69px;
 }
@@ -41,6 +36,7 @@ body {
   font-size: 20px;
   color: #212529;
   font-family: 'Lora', 'Times New Roman', serif;
+  background: #F4F5F7;
 }
 
 main {
@@ -127,7 +123,7 @@ img::-moz-selection {
 #mainNav {
   position: absolute;
   border-bottom: 1px solid #e9ecef;
-  background-color: white;
+  background-color: #F4F5F7;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -185,7 +181,7 @@ img::-moz-selection {
     position: fixed;
     top: -67px;
     transition: transform 0.2s;
-    border-bottom: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(204, 204, 204);
     background-color: rgba(255, 255, 255, 0.9);
   }
   #mainNav.is-fixed .navbar-brand {
@@ -461,4 +457,24 @@ footer .copyright {
   margin-bottom: 20px;
   margin-left: 30px;
   // text-align: center;
+}
+
+.font-small {
+  font-size: small;
+}
+
+.new-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 9%;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  text-align: center;
+  background-color: #00ddff;
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+  i{
+    margin-top: 22px;
+  }
 }

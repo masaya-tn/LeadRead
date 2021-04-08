@@ -12,11 +12,9 @@
             - @output.author.each do |author|
               = author
           - else 
-            = @output.author
-      
+            = @output.author    
       .output_content
         = @output.body
-
       .row.output-footer
         .col-6.output-user
           = link_to user_path(@output.user)

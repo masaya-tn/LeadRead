@@ -6,7 +6,7 @@ div id="message-#{message.id}"
       - else 
         i.fas.fa-user
       = message.user.username 
-      = message.body
+      = " #{message.body}"
     .col-sm-4
       - if current_user&.own?(message)
         = link_to message_path(message), class: 'mr-3', method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do

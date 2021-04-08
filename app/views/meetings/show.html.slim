@@ -18,19 +18,23 @@
       = render 'reject_user', user: nil
       - @meeting.participanting_users.each do |permited_user|
         = link_to user_path(permited_user)
+          - if permited_user.avatar.present?
+            = image_tag permited_user.avatar.url, size: '20x20', class: 'rounded-circle mr-1'
           = "#{permited_user.username} "
     
-    - if @meeting.after_now?
-      - if current_user&.own?(@meeting)
+    - if current_user&.own?(@meeting)
+      - if @meeting.after_now?
         .meeting-info = "参加申請一覧:"
         - @meeting.requesting_users.each do |requesting_user|
           = render 'permit_area', meeting: @meeting, requesting_user: requesting_user
-        
+
+      .meeting-buttons 
         = link_to edit_meeting_path(@meeting), class: 'edit-button' do
           = icon 'far', 'edit'
         = link_to meeting_path(@meeting), class: 'delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do
           = icon 'far', 'trash-alt'
-      - elsif current_user
+    - elsif current_user
+      - if @meeting.after_now?
         = render 'request_area', meeting: @meeting
     
     - if current_user&.own?(@meeting) || current_user&.participant?(@meeting)
@@ -44,7 +48,7 @@
       .twitter-share-link
         = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
           i.fab.fa-twitter = "Twitterでシェア"
-    = @meeting.date.to_s(:datetime)
+    = "開催日時: #{@meeting.date.to_s(:datetime)}"
       
 
 

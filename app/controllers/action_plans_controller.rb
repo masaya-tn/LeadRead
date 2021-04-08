@@ -1,4 +1,6 @@
 class ActionPlansController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @action_plans = current_user.action_plans.order(created_at: :desc)
   end

@@ -31,7 +31,7 @@
                   = link_to action_plan_path(action_plan)
                     - if action_plan.book_image.present?
                       = image_tag action_plan.book_image
-                    = action_plan.action_content
+                    .font-small = action_plan.action_content
   .card
     #headingThree.card-header
       h5.mb-0

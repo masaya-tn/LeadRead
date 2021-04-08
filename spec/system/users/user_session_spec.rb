@@ -26,4 +26,12 @@ RSpec.describe 'ログイン、ログアウト', type: :system do
       end
     end
   end
+
+  describe 'ログアウト' do
+    it 'ログアウトできること' do
+      login
+      find('.logout-button').click
+      expect(page).to have_content 'ログアウトしました'
+    end
+  end
 end

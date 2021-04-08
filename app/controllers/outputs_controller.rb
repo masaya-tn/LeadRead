@@ -1,5 +1,5 @@
 class OutputsController < ApplicationController
-  before_action :require_current_user
+  before_action :authenticate_user!
 
   def index
     @outputs = Output.all.includes(:likes).page(params[:page]).per(20).order(created_at: :desc)

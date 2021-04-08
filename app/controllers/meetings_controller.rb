@@ -1,4 +1,6 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @meetings = Meeting.all.includes(:participanting_users, :user).page(params[:page]).per(10).order(date: :desc)
     @q = Meeting.ransack(params[:q])

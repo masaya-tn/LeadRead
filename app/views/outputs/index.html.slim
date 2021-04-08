@@ -1,20 +1,27 @@
 .outputs-container
+  h6
+    | 記事を検索
   .search-form = render 'search_form'
   .row
     - @outputs.each do |output|
       .col-md-3.col-xs-12.outputs-border  
-        = link_to output_path(output)
-          .output_book 
-            .col-md-12
-              - if output.book_image.present?
-                = image_tag output.book_image, size: "100x140"
-              - else 
+        .output_book 
+          .col-md-12
+            - if output.book_image.present?
+              = image_tag output.book_image, size: "100x140"
+            - else 
+              .small_title
                 = output.book_title
+          = link_to output_path(output)
             .small_title
               = output.title
-          .outputs-heart
-            = icon 'far', 'heart', class: 'fa-sm'
-            = output.likes.size
+        .outputs-heart
+          = icon 'far', 'heart', class: 'fa-sm'
+          = output.likes.size
 
     = paginate @outputs   
+
+= link_to search_books_path do
+  .new-btn
+    i.fa.fa-plus
               

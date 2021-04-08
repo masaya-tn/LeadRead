@@ -1,14 +1,24 @@
-h6 
-  | 検索結果
+.meetings-container
+  h6 
+    | 検索結果
 
-.row
-  - @meetings.each do |meeting|
-    .col-md-12
-      .card
-        = link_to meeting_path(meeting)
+  .row
+    - @meetings.each do |meeting|
+      .col-md-12
+        .card.meetings-card
           .card-body 
-            .card-title
-              = meeting.title
-            .card-body
-              = meeting.description
-  
+            .row
+              .col-4
+                - if meeting.user.avatar.present?
+                  = image_tag meeting.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1' 
+                - else 
+                  i.fas.fa-user
+                = meeting.user.username
+              .col-8
+                = link_to meeting_path(meeting)
+                  .card-title = meeting.title
+                - if !meeting.after_now?
+                  = '※終了しました'
+              .meetings-body = meeting.description[0,100]
+              .meetings-info = "参加人数: #{meeting.participanting_users.size}人/#{meeting.capacity}人"
+              .meeting-date = "開催日: #{meeting.date.to_s(:datetime)}"

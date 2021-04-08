@@ -1,18 +1,18 @@
-.new-meeting-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 9%;
-  width: 64px;
-  height: 64px;
-  border-radius: 100%;
-  text-align: center;
-  background-color: #00ddff;
-  color: rgb(255, 255, 255);
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
-  i{
-    margin-top: 22px;
-  }
-}
+// .new-btn {
+//   position: fixed;
+//   bottom: 30px;
+//   right: 9%;
+//   width: 64px;
+//   height: 64px;
+//   border-radius: 100%;
+//   text-align: center;
+//   background-color: #00ddff;
+//   color: rgb(255, 255, 255);
+//   box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+//   i{
+//     margin-top: 22px;
+//   }
+// }
 
 .meetings-wrapper {
   width: 90%;
@@ -53,7 +53,7 @@
 
 .meeting-content {
   padding-top: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   width: 90%;
   margin: 0 auto;
 }
@@ -65,6 +65,7 @@
 
 .meeting-info {
   margin-bottom: 5px;
+  font-size: small;
 }
 
 .meeting-date {
@@ -100,4 +101,9 @@
 
 .twitter-share-link {
   margin-bottom: 20px;
+}
+
+.meeting-buttons {
+  margin-bottom: 20px;
+  text-align: right;
 }

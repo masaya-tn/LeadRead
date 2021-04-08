@@ -1,4 +1,6 @@
 .outputs-container
+  h6.search-books
+    | 本を探す
   .search-form
     = form_with model: @search_form, url: search_books_path, local:true, scope: :q, method: :get do |f|
       .row
@@ -6,7 +8,6 @@
         .col
           = f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワード'
         .col
-          / = f.submit 'search', class: 'btn btn-info btn-raised rounded'
           = button_tag type: 'submit', class: 'btn btn-info btn-raised rounded'
             i.fas.fa-search
 

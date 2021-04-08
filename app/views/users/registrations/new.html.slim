@@ -7,7 +7,7 @@
       .form-group
         = f.email_field :email, class: 'form-control login-form', placeholder: 'メールアドレス'
       .form-group
-        = f.password_field :password, class: 'form-control login-form', placeholder: "パスワード (英数字で6字以上)", autocomplete: "new-password"
+        = f.password_field :password, class: 'form-control login-form', placeholder: "パスワード", autocomplete: "new-password"
       .form-group
         = f.password_field :password_confirmation, class: 'form-control login-form', placeholder: 'パスワード確認', autocomplete: "new-password"
       = f.submit "ユーザー登録", class: 'btn btn-info btn-raised rounded login-btn'

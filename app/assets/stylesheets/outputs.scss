@@ -8,7 +8,7 @@
   width: 70%;
   margin: 0 auto;
   padding-bottom: 30px;
-  font-weight: bold;
+  
 }
 
 .book-detail {
@@ -88,6 +88,8 @@
   width: 90%;
 }
 
-// .output-user {
-//   text-align: center;
-// }
+.output-show-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
